@@ -1,1 +1,1 @@
-worker: java Parser.java
+worker: java src\main\java\com\artek\HtmlParser\Parser.java
