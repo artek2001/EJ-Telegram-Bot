@@ -1,15 +1,21 @@
 package com.artek.HtmlParser;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Parser {
 
-    public static String login = "zaichikauartsiom";
+    public static String login = "";
     public static String password = "18-00";
     public static String trueFor = "NOT FOUND";
     public static boolean isFound = false;
 
     public static void main(String[] args) throws IOException {
+
+        BufferedReader stream = new BufferedReader(new InputStreamReader(System.in));
+        String login = stream.readLine();
 
         EjBot bot = new EjBot(login, password);
 
