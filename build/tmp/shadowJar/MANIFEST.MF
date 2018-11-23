@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Class-Path: jaunt1.5.2.jar httpclient-4.5.6.jar httpcore-4.4.10.jar comm
+ ons-logging-1.2.jar commons-codec-1.10.jar
+Main-Class: com.artek.HtmlParser.Parser
+
