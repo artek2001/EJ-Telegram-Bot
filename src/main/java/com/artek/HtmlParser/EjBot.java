@@ -1,5 +1,10 @@
 package com.artek.HtmlParser;
 
+import com.artek.BotCommands.BotCommand;
+import com.artek.BotCommands.StartCommand;
+import com.artek.Config;
+import com.artek.ICommand;
+import com.artek.ICommandRegister;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -9,19 +14,29 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.telegram.telegrambots.bots.TelegramLongPollingBot;
+import org.telegram.telegrambots.meta.api.objects.Message;
+import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.bots.AbsSender;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.BiConsumer;
 
-public class EjBot {
+public class EjBot extends TelegramLongPollingBot implements ICommandRegister {
+    //TODO make command registry
+    public ArrayList<ICommand> commands = new ArrayList<>();
 
+    public static final String LOGTAG = "EJBOT";
     public String password;
     public String login;
 
     public EjBot(String login, String password) {
         this.login = login;
         this.password = password;
+
+        registerCommand(new StartCommand());
     }
 
     public String parseMessage(String login, String password) throws IOException {
@@ -90,5 +105,42 @@ public class EjBot {
 //
 //        return resultMessage;
         return "END";
+    }
+
+    @Override
+    public void onUpdateReceived(Update update) {
+        if (update.hasMessage()) {
+            Message message = update.getMessage();
+            if (message.isCommand()) {
+                switch (message.getText()) {
+                    case "/start":
+                        StartCommand command = (StartCommand)this.commands.get(0);
+
+                        //TODO ARGS
+                        command.execute(this, update.getMessage().getFrom(), update.getMessage().getChat(), new String[]{});
+                }
+            }
+        }
+    }
+
+    @Override
+    public String getBotUsername() {
+        return Config.BOTUSERNAME;
+    }
+
+    @Override
+    public String getBotToken() {
+        return Config.TOKEN;
+    }
+
+    @Override
+    public void registerDefaultAction(BiConsumer<AbsSender, Message> var1) {
+
+    }
+
+    @Override
+    public boolean registerCommand(ICommand command) {
+        this.commands.add(command);
+        return true;
     }
 }
