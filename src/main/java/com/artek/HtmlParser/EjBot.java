@@ -1,6 +1,7 @@
 package com.artek.HtmlParser;
 
 import com.artek.BotCommands.BotCommand;
+import com.artek.BotCommands.CommandRegistry;
 import com.artek.BotCommands.StartCommand;
 import com.artek.Config;
 import com.artek.ICommand;
@@ -18,25 +19,26 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.bots.AbsSender;
+import org.telegram.telegrambots.meta.logging.BotLogger;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.function.BiConsumer;
 
-public class EjBot extends TelegramLongPollingBot implements ICommandRegister {
-    //TODO make command registry
+public class EjBot extends TelegramLongPollingBot implements ICommandRegister{
+
     public ArrayList<ICommand> commands = new ArrayList<>();
 
     public static final String LOGTAG = "EJBOT";
-    public String password;
-    public String login;
+    private final CommandRegistry defaultCommandRegistry;
 
-    public EjBot(String login, String password) {
-        this.login = login;
-        this.password = password;
+    public EjBot() {
+        this.defaultCommandRegistry = new CommandRegistry(false, getBotUsername());
 
         registerCommand(new StartCommand());
+
     }
 
     public String parseMessage(String login, String password) throws IOException {
@@ -111,16 +113,17 @@ public class EjBot extends TelegramLongPollingBot implements ICommandRegister {
     public void onUpdateReceived(Update update) {
         if (update.hasMessage()) {
             Message message = update.getMessage();
-            if (message.isCommand()) {
-                switch (message.getText()) {
-                    case "/start":
-                        StartCommand command = (StartCommand)this.commands.get(0);
+            if (message.isCommand() && !filter(message)) {
+                if (!defaultCommandRegistry.executeCommand(this, message)) {
 
-                        //TODO ARGS
-                        command.execute(this, update.getMessage().getFrom(), update.getMessage().getChat(), new String[]{});
                 }
+
             }
         }
+    }
+
+    private boolean filter(Message message) {
+        return false;
     }
 
     @Override
@@ -134,13 +137,22 @@ public class EjBot extends TelegramLongPollingBot implements ICommandRegister {
     }
 
     @Override
-    public void registerDefaultAction(BiConsumer<AbsSender, Message> var1) {
+    public void registerDefaultAction(BiConsumer<AbsSender, Message> consumer) {
 
     }
 
     @Override
     public boolean registerCommand(ICommand command) {
-        this.commands.add(command);
-        return true;
+        return defaultCommandRegistry.registerCommand(command);
+    }
+
+    @Override
+    public Collection<ICommand> getRegisteredCommands() {
+        return defaultCommandRegistry.getRegisteredCommands();
+    }
+
+    @Override
+    public ICommand getRegisteredCommand(String commandIdentifier) {
+        return defaultCommandRegistry.getRegisteredCommand(commandIdentifier);
     }
 }

@@ -4,7 +4,6 @@ import com.artek.HtmlParser.EjBot;
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
 import org.telegram.telegrambots.meta.logging.BotLogger;
 
 import java.util.logging.ConsoleHandler;
@@ -24,7 +23,7 @@ public class Main {
             TelegramBotsApi api = new TelegramBotsApi();
 
             try {
-                api.registerBot(new EjBot(Config.BOTUSERNAME, Config.TOKEN));
+                api.registerBot(new EjBot());
             } catch (TelegramApiException e) {
                     BotLogger.error(LOGTAG, e);
             }
