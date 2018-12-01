@@ -2,13 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fab44009-f708-4489-a6c3-0a793f854522" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/artek/BotCommands/CommandRegistry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/artek/BuildVars.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/artek/Database/ConnectionDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.8/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.8/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/artek/BotCommands/BotCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/artek/BotCommands/BotCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/artek/BotCommands/StartCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/artek/BotCommands/StartCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/artek/Database/DBManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/artek/Database/DBManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/com/artek/HtmlParser/EjBot.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/artek/HtmlParser/EjBot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/artek/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/artek/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/artek/BotCommands/BotCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/artek/BotCommands/BotCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/artek/BotCommands/StartCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/artek/BotCommands/StartCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/artek/Database/DBManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/artek/Database/DBManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/artek/HtmlParser/EjBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/artek/HtmlParser/EjBot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/artek/HtmlParser/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/artek/HtmlParser/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/artek/ICommandRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/artek/ICommandRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/artek/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/artek/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -23,6 +35,25 @@
     <SUITE FILE_PATH="coverage/ej_bot$Parser.ic" NAME="Parser Coverage Results" MODIFIED="1542890733309" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.artek.HtmlParser.*</FILTER>
     </SUITE>
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="heroku_a2ae7762c153707@us-cdbr-iron-east-01.cleardb.net" type="feb32156:DbDataSourceImpl" />
+      </path>
+    </expand>
+    <select />
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -119,41 +150,45 @@
     <session id="904879563">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="8" />
+          <entry key="project.closed" value="13" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.2" value="2" />
           <entry key="project.open.time.4" value="1" />
-          <entry key="project.open.time.7" value="3" />
+          <entry key="project.open.time.7" value="6" />
+          <entry key="project.open.time.8" value="3" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.opened" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Procfile" value="41" />
           <entry key="gradle" value="83" />
-          <entry key="java" value="3571" />
+          <entry key="java" value="3809" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="83" />
-          <entry key="JAVA" value="3571" />
+          <entry key="JAVA" value="6553" />
           <entry key="PLAIN_TEXT" value="41" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="Procfile" value="1" />
-          <entry key="java" value="43" />
+          <entry key="java" value="46" />
           <entry key="properties" value="1" />
+          <entry key="sql" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="43" />
+          <entry key="Groovy" value="1" />
+          <entry key="JAVA" value="54" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="Properties" value="1" />
+          <entry key="Scratch" value="1" />
         </counts>
       </usages-collector>
     </session>
@@ -164,10 +199,24 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/HtmlParser/EjBot.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/Database/DBManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="80" column="18" lean-forward="true" selection-start-line="80" selection-start-column="18" selection-end-line="80" selection-end-column="18" />
+            <state relative-caret-position="697">
+              <caret line="77" lean-forward="true" selection-start-line="77" selection-end-line="77" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#223#224#0" expanded="true" />
+                <element signature="e#270#271#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/BotCommands/StartCommand.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="259">
+              <caret line="35" column="37" selection-start-line="35" selection-start-column="37" selection-end-line="35" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -195,6 +244,7 @@
       <find>userName</find>
       <find>userNa</find>
       <find>execute</find>
+      <find>WAS</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -412,9 +462,9 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="4628961004448" />
+        <entry key="$PROJECT_DIR$" value="4629504035171" />
         <entry key="$PROJECT_DIR$/.gradle" value="0" />
-        <entry key="$PROJECT_DIR$/build.gradle" value="3477151208" />
+        <entry key="$PROJECT_DIR$/build.gradle" value="3634290543" />
         <entry key="$PROJECT_DIR$/settings.gradle" value="2629636926" />
       </map>
     </option>
@@ -561,17 +611,19 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Procfile" />
-        <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/src/main/java/com/artek/Database/DBManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/artek/Config.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/artek/ICommand.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/artek/BotCommands/StartCommand.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/artek/BotCommands/BotCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/artek/ICommandRegister.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/artek/BotCommands/CommandRegistry.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/artek/HtmlParser/Parser.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/artek/HtmlParser/EjBot.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/artek/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/artek/HtmlParser/Parser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/artek/BotCommands/CommandRegistry.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/artek/BotCommands/BotCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/artek/Database/ConnectionDB.java" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/main/java/com/artek/BuildVars.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/artek/HtmlParser/EjBot.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/artek/BotCommands/StartCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/artek/Database/DBManager.java" />
       </list>
     </option>
   </component>
@@ -588,8 +640,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="216" />
-    <option name="y" value="-27" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
     <option name="width" value="1938" />
     <option name="height" value="1056" />
   </component>
@@ -599,6 +651,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -670,18 +723,49 @@
               <item name="artek" type="462c0819:PsiDirectoryNode" />
               <item name="HtmlParser" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="ej_bot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+            <path>
+              <item name="ej_bot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Gradle: mysql:mysql-connector-java:8.0.13" type="70bed36:NamedLibraryElementNode" />
+            </path>
+            <path>
+              <item name="ej_bot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Gradle: mysql:mysql-connector-java:8.0.13" type="70bed36:NamedLibraryElementNode" />
+              <item name="mysql-connector-java-8.0.13.jar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ej_bot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Gradle: mysql:mysql-connector-java:8.0.13" type="70bed36:NamedLibraryElementNode" />
+              <item name="mysql-connector-java-8.0.13.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="mysql" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ej_bot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Gradle: mysql:mysql-connector-java:8.0.13" type="70bed36:NamedLibraryElementNode" />
+              <item name="mysql-connector-java-8.0.13.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="mysql" type="462c0819:PsiDirectoryNode" />
+              <item name="cj" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql&#10;java.sql.Driver" />
+    <property name="SearchEverywhereHistoryKey" value="BuildVa&#9;FILE&#9;file://C:/Users/User/Desktop/ejbot/src/main/java/com/artek/BuildVars.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543478526713" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543683743683" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../TelegramBotsExample-master" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -770,11 +854,17 @@
       <workItem from="1543136271686" duration="8193000" />
       <workItem from="1543144518198" duration="2478000" />
       <workItem from="1543473966260" duration="3921000" />
+      <workItem from="1543512279313" duration="1169000" />
+      <workItem from="1543514315767" duration="4843000" />
+      <workItem from="1543578430709" duration="1434000" />
+      <workItem from="1543580624874" duration="1278000" />
+      <workItem from="1543604082680" duration="37000" />
+      <workItem from="1543604158909" duration="12361000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29307000" />
+    <option name="totallyTimeSpent" value="50429000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -787,41 +877,42 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Designer" order="0" />
       <window_info id="Build Variants" order="1" side_tool="true" />
       <window_info id="Image Layers" order="2" />
       <window_info id="UI Designer" order="3" />
-      <window_info id="Favorites" order="4" sideWeight="0.5083488" side_tool="true" weight="0.24210526" />
+      <window_info id="Favorites" order="4" sideWeight="0.51576996" side_tool="true" weight="0.23967612" />
       <window_info id="Capture Tool" order="5" />
-      <window_info active="true" content_ui="combo" id="Project" order="6" sideWeight="0.4916512" visible="true" weight="0.24210526" />
+      <window_info content_ui="combo" id="Project" order="6" sideWeight="0.48423004" visible="true" weight="0.22753036" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.5343228" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.72727275" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.62152135" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.42486086" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.3283859" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.6697588" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.5046382" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.3283859" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.3283859" />
-      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="11" weight="0.3283859" />
       <window_info anchor="bottom" id="Version Control" order="12" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Java Enterprise" order="13" />
+      <window_info anchor="bottom" id="Java Enterprise" order="13" weight="0.3283859" />
+      <window_info anchor="bottom" id="Database" order="14" weight="0.53061223" />
       <window_info anchor="right" id="Palette" order="0" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Structure" order="2" sideWeight="0.5009276" weight="0.24939272" />
       <window_info anchor="right" id="Maven Projects" order="3" weight="0.32955465" />
       <window_info anchor="right" id="Gradle" order="4" weight="0.32955465" />
-      <window_info anchor="right" id="Database" order="5" />
-      <window_info anchor="right" id="Palette&#9;" order="6" />
-      <window_info anchor="right" id="Theme Preview" order="7" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="8" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="9" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="10" weight="0.25" />
-      <window_info anchor="right" id="Coverage" order="11" side_tool="true" weight="0.32955465" />
-      <window_info anchor="right" id="Bean Validation" order="12" />
+      <window_info anchor="right" id="Palette&#9;" order="5" />
+      <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="7" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="8" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="9" weight="0.25" />
+      <window_info anchor="right" id="Coverage" order="10" side_tool="true" weight="0.32955465" />
+      <window_info anchor="right" id="Bean Validation" order="11" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -862,13 +953,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="15" selection-start-column="15" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -960,9 +1044,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-748">
           <caret line="25" selection-start-line="25" selection-end-line="25" />
-          <folding>
-            <element signature="e#1179#1206#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -977,10 +1058,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="148">
           <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
-          <folding>
-            <element signature="e#613#614#0" expanded="true" />
-            <element signature="e#682#683#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -988,42 +1065,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="470">
           <caret line="363" column="19" selection-start-line="363" selection-start-column="19" selection-end-line="363" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/Database/DBManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/HtmlParser/Parser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/BotCommands/StartCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="39" column="26" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#528#529#0" expanded="true" />
-            <element signature="e#589#590#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/BotCommands/CommandRegistry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-656">
-          <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -1044,16 +1085,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/BotCommands/BotCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="23" column="100" selection-start-line="23" selection-start-column="92" selection-end-line="23" selection-end-column="100" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
@@ -1064,12 +1095,112 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/HtmlParser/EjBot.java">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/9778517c-8ce5-49ca-9fdd-40e32539dfdf/console.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/HtmlParser/Parser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="80" column="18" lean-forward="true" selection-start-line="80" selection-start-column="18" selection-end-line="80" selection-end-column="18" />
+        <state relative-caret-position="161">
+          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.sql/java/sql/DriverManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="216" column="29" selection-start-line="216" selection-start-column="29" selection-end-line="216" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/BotCommands/CommandRegistry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="53" column="25" selection-start-line="53" selection-start-column="25" selection-end-line="53" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/BuildVars.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="41" lean-forward="true" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="25" column="75" selection-start-line="25" selection-start-column="75" selection-end-line="25" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/BotCommands/BotCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="711">
+          <caret line="55" column="95" selection-start-line="55" selection-start-column="95" selection-end-line="55" selection-end-column="95" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/Database/ConnectionDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-104">
+          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="24" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#210#211#0" expanded="true" />
+            <element signature="e#266#267#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/HtmlParser/EjBot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="31">
+          <caret line="60" column="40" selection-start-line="60" selection-start-column="40" selection-end-line="60" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1878#1893#0" expanded="true" />
+            <element signature="e#1850#1865#0" expanded="true" />
+            <element signature="e#5308#5309#0" expanded="true" />
+            <element signature="e#5336#5337#0" expanded="true" />
+            <element signature="e#5388#5389#0" expanded="true" />
+            <element signature="e#5429#5430#0" expanded="true" />
+            <element signature="e#5478#5479#0" expanded="true" />
+            <element signature="e#5513#5514#0" expanded="true" />
+            <element signature="e#5686#5687#0" expanded="true" />
+            <element signature="e#5756#5757#0" expanded="true" />
+            <element signature="e#5829#5830#0" expanded="true" />
+            <element signature="e#5898#5899#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/BotCommands/StartCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="35" column="37" selection-start-line="35" selection-start-column="37" selection-end-line="35" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/Database/DBManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="77" lean-forward="true" selection-start-line="77" selection-end-line="77" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#223#224#0" expanded="true" />
+            <element signature="e#270#271#0" expanded="true" />
           </folding>
         </state>
       </provider>

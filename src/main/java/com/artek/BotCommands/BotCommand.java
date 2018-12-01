@@ -6,6 +6,8 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.User;
 import org.telegram.telegrambots.meta.bots.AbsSender;
 
+import java.io.IOException;
+
 public abstract class BotCommand implements ICommand {
 
     public static final String COMMAND_INIT_CHARACTER = "/";

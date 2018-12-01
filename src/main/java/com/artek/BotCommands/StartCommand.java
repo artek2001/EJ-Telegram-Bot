@@ -1,11 +1,16 @@
 package com.artek.BotCommands;
 
+import com.artek.Database.DBManager;
+import com.artek.HtmlParser.EjBot;
+import com.artek.HtmlParser.Parser;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Chat;
 import org.telegram.telegrambots.meta.api.objects.User;
 import org.telegram.telegrambots.meta.bots.AbsSender;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.meta.logging.BotLogger;
+
+import java.io.IOException;
 
 public class StartCommand extends BotCommand{
 
@@ -18,28 +23,35 @@ public class StartCommand extends BotCommand{
 
     @Override
     public void execute(AbsSender sender, User userFrom, Chat chatFrom, String[] args) {
-        //TODO check if user is already registered using DBManager
+        DBManager dbManager = DBManager.getInstance();
 
-        String userName = chatFrom.getUserName();
-
-        if (userName == null || userName.isEmpty()) {
-            userName = userFrom.getFirstName() + " " + userFrom.getLastName();
+        StringBuilder messageResponse = new StringBuilder();
+        if (dbManager.getUserStateForBot(userFrom.getId())) {
+            messageResponse.append("You are already registered");
         }
+        else {
+            try {
+                if (EjBot.checkConnection(args[0], args[1])) {
+                    messageResponse.append("Successfully logged in");
+                    dbManager.setUserStateForBot(userFrom.getId(),args[0], args[1], true);
+                }
+                else {
+                    messageResponse.append("Wrong login or password");
+                }
 
-        StringBuilder messageRespone = new StringBuilder("HELLO ").append(userName);
-
-        if (args != null && args.length > 0) {
-            messageRespone.append("\n");
-            messageRespone.append("Thank you for your kind words: \n");
-            messageRespone.append(String.join(" ", args));
+            } catch (IOException e) {
+                BotLogger.error(LOGTAG, "ERROR is executeStartCommand method");
+            }
         }
-
-        SendMessage sendMessage = new SendMessage(chatFrom.getId(), messageRespone.toString());
+        SendMessage message = new SendMessage();
+        message.setText(messageResponse.toString());
+        message.setChatId(chatFrom.getId().toString());
 
         try {
-            sender.execute(sendMessage);
+            sender.execute(message);
         } catch (TelegramApiException e) {
-            BotLogger.error(LOGTAG, e);
+            BotLogger.error(LOGTAG, "Message was not sent");
         }
+
     }
 }

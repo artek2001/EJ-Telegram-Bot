@@ -4,6 +4,7 @@ import com.artek.BotCommands.BotCommand;
 import com.artek.BotCommands.CommandRegistry;
 import com.artek.BotCommands.StartCommand;
 import com.artek.Config;
+import com.artek.Database.DBManager;
 import com.artek.ICommand;
 import com.artek.ICommandRegister;
 import org.apache.http.HttpEntity;
@@ -22,6 +23,7 @@ import org.telegram.telegrambots.meta.bots.AbsSender;
 import org.telegram.telegrambots.meta.logging.BotLogger;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -30,7 +32,6 @@ import java.util.function.BiConsumer;
 public class EjBot extends TelegramLongPollingBot implements ICommandRegister{
 
     public ArrayList<ICommand> commands = new ArrayList<>();
-
     public static final String LOGTAG = "EJBOT";
     private final CommandRegistry defaultCommandRegistry;
 
@@ -41,7 +42,7 @@ public class EjBot extends TelegramLongPollingBot implements ICommandRegister{
 
     }
 
-    public String parseMessage(String login, String password) throws IOException {
+    public static boolean checkConnection(String login, String password) throws IOException {
         String resultMessage = null;
 
         CloseableHttpClient client = HttpClients.createDefault();
@@ -57,13 +58,31 @@ public class EjBot extends TelegramLongPollingBot implements ICommandRegister{
         HttpEntity entity = response.getEntity();
 
         String htmlString = EntityUtils.toString(entity, "UTF-8");
+        if (htmlString.length() > 200) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public String parseMessage(Integer userId) throws IOException {
+        String resultMessage = null;
+
+        CloseableHttpClient client = HttpClients.createDefault();
+        HttpPost post = new HttpPost("http://ej.grsmu.by/prosm_ocenki_stud.php");
+
+        List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+        //nvps.add(new BasicNameValuePair("login", login));
+        //nvps.add(new BasicNameValuePair("password", password));
+
+        post.setEntity(new UrlEncodedFormEntity(nvps));
+        CloseableHttpResponse response = client.execute(post);
+
+        HttpEntity entity = response.getEntity();
+
+        String htmlString = EntityUtils.toString(entity, "UTF-8");
         if (htmlString.length() > 400) {
-            System.out.println("TRUE FOR " + password);
-            Parser.trueFor = password;
-            Parser.isFound = true;
             return "END";
-
-
         }
         //System.out.println(htmlString);
 //        UserAgent userAgent = new UserAgent();
