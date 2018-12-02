@@ -1,5 +1,19 @@
 Manifest-Version: 1.0
-Class-Path: jaunt1.5.2.jar httpclient-4.5.6.jar httpcore-4.4.10.jar comm
- ons-logging-1.2.jar commons-codec-1.10.jar
-Main-Class: com.artek.HtmlParser.Parser
+Class-Path: jaunt1.5.2.jar mysql-connector-java-8.0.13.jar telegrambots-
+ 4.1.jar httpmime-4.5.3.jar httpclient-4.5.6.jar protobuf-java-3.6.1.jar
+  httpcore-4.4.10.jar commons-logging-1.2.jar commons-codec-1.10.jar tel
+ egrambots-meta-4.1.jar jackson-jaxrs-json-provider-2.8.7.jar jackson-ja
+ xrs-base-2.8.7.jar jackson-module-jaxb-annotations-2.8.7.jar jackson-da
+ tabind-2.8.7.jar jackson-annotations-2.8.0.jar jersey-media-json-jackso
+ n-2.25.1.jar jersey-container-grizzly2-http-2.25.1.jar jersey-server-2.
+ 25.1.jar json-20160810.jar commons-io-2.5.jar guice-4.1.0.jar jackson-c
+ ore-2.8.7.jar jersey-client-2.25.1.jar jersey-media-jaxb-2.25.1.jar jer
+ sey-common-2.25.1.jar jersey-entity-filtering-2.25.1.jar hk2-locator-2.
+ 5.0-b32.jar javax.inject-2.5.0-b32.jar grizzly-http-server-2.3.28.jar j
+ avax.ws.rs-api-2.0.1.jar javax.annotation-api-1.2.jar hk2-api-2.5.0-b32
+ .jar validation-api-1.1.0.Final.jar hk2-utils-2.5.0-b32.jar javax.injec
+ t-1.jar aopalliance-1.0.jar guava-19.0.jar jersey-guava-2.25.1.jar osgi
+ -resource-locator-1.0.1.jar grizzly-http-2.3.28.jar aopalliance-repacka
+ ged-2.5.0-b32.jar javassist-3.20.0-GA.jar grizzly-framework-2.3.28.jar
+Main-Class: com.artek.Main
 

@@ -53,23 +53,23 @@ public class DBManager {
         return updatedRows > 0;
     }
 
-    public int getUserIdByLogin(String login) {
-        int userId = 0;
-
+    public String[] getUserCredentialsById(Integer userId) {
+        String[] credentials = new String[2];
         try {
-            final PreparedStatement preparedStatement = connection.getPreparedStatement("SELECT id FROM users WHERE login=?");
-            preparedStatement.setString(1, login);
+            final PreparedStatement preparedStatement = connection.getPreparedStatement("SELECT login, password FROM  users WHERE userId=?");
+            preparedStatement.setInt(1, userId);
             ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                userId = resultSet.getInt("id");
+            if (resultSet.next()) {
+                credentials[0] = resultSet.getString("login");
+                credentials[1] = resultSet.getString("password");
             }
-            return userId;
+            return credentials;
         }
 
         catch (SQLException e) {
-            BotLogger.error(LOGTAG, "getUserIdByLogin method error");
+            BotLogger.error(LOGTAG, "getUserCredentialsById method error");
         }
-        return userId;
+        return credentials;
 
     }
 
@@ -89,6 +89,21 @@ public class DBManager {
             BotLogger.error("SQL_EXCEPTION", "Error in userSetActive method");
         }
         return status == 1;
+    }
+
+    public boolean setUserStateForBot(Integer userId, Integer isActive) {
+        int changedRows = 0;
+        try {
+            final PreparedStatement preparedStatement = connection.getPreparedStatement("UPDATE users SET isActive = ? WHERE userId = ?");
+            preparedStatement.setInt(1, isActive);
+            preparedStatement.setInt(2, userId);
+            changedRows = preparedStatement.executeUpdate();
+        }
+
+        catch (SQLException e) {
+            BotLogger.error("SQL_EXCEPTION", "error in setUserStateForBot(Integer userId, boolean isActive) for userId = " + userId);
+        }
+        return changedRows > 0;
     }
 
 }

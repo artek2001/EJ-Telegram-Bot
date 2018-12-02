@@ -34,7 +34,7 @@ jar {
     manifest {
         attributes(
                 'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
-                'Main-Class': 'com.artek.HtmlParser.Parser'
+                'Main-Class': 'com.artek.Main'
         )
     }
 }

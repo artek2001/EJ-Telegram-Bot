@@ -24,34 +24,43 @@ public class StartCommand extends BotCommand{
     @Override
     public void execute(AbsSender sender, User userFrom, Chat chatFrom, String[] args) {
         DBManager dbManager = DBManager.getInstance();
-
         StringBuilder messageResponse = new StringBuilder();
-        if (dbManager.getUserStateForBot(userFrom.getId())) {
-            messageResponse.append("You are already registered");
-        }
-        else {
-            try {
-                if (EjBot.checkConnection(args[0], args[1])) {
-                    messageResponse.append("Successfully logged in");
-                    dbManager.setUserStateForBot(userFrom.getId(),args[0], args[1], true);
-                }
-                else {
-                    messageResponse.append("Wrong login or password");
-                }
-
-            } catch (IOException e) {
-                BotLogger.error(LOGTAG, "ERROR is executeStartCommand method");
-            }
-        }
         SendMessage message = new SendMessage();
-        message.setText(messageResponse.toString());
         message.setChatId(chatFrom.getId().toString());
 
+
+        if (args == null || args.length < 2) {
+            messageResponse.append("To start the bot, type:" + "\n" + "/start login password");
+            message.setText(messageResponse.toString());
+        }
+
+        else {
+            if (dbManager.getUserStateForBot(userFrom.getId())) {
+                messageResponse.append("You are already registered");
+            }
+            else {
+                try {
+                    if (EjBot.checkConnection(args[0], args[1])) {
+                        messageResponse.append("Successfully logged in");
+                        dbManager.setUserStateForBot(userFrom.getId(),args[0], args[1], true);
+                    }
+                    else {
+                        messageResponse.append("Wrong login or password");
+                    }
+
+                } catch (IOException e) {
+                    BotLogger.error(LOGTAG, "ERROR is executeStartCommand method");
+                }
+            }
+
+            message.setText(messageResponse.toString());
+
+
+        }
         try {
             sender.execute(message);
         } catch (TelegramApiException e) {
             BotLogger.error(LOGTAG, "Message was not sent");
         }
-
     }
 }
