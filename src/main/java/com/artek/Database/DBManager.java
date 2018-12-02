@@ -8,8 +8,8 @@ import java.sql.SQLException;
 
 public class DBManager {
     private static final String LOGTAG = "DATABASEMANAGER";
-    private static DBManager instance;
-    private static ConnectionDB connection;
+    private static volatile DBManager instance;
+    private static volatile ConnectionDB connection;
 
     private  DBManager() {
         connection = new ConnectionDB();
