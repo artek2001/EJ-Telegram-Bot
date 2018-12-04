@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fab44009-f708-4489-a6c3-0a793f854522" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/string.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/artek/BuildVars.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/artek/BuildVars.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/artek/Database/ConnectionDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/artek/Database/ConnectionDB.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/artek/Database/DBManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/artek/Database/DBManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/artek/BotCommands/MarksCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/artek/BotCommands/MarksCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/artek/BuildVars.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/artek/BuildVars.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/artek/Database/ConnectionDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/artek/Database/ConnectionDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/artek/Database/DBManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/artek/Database/DBManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/artek/HtmlParser/EjBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/artek/HtmlParser/EjBot.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -238,7 +229,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/HtmlParser/EjBot.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="56">
-              <caret line="76" column="20" selection-start-line="76" selection-start-column="20" selection-end-line="76" selection-end-column="20" />
+              <caret line="76" selection-start-line="76" selection-end-line="76" />
             </state>
           </provider>
         </entry>
@@ -801,7 +792,7 @@
     <property name="SearchEverywhereHistoryKey" value="BuildVa&#9;FILE&#9;file://C:/Users/User/Desktop/ejbot/src/main/java/com/artek/BuildVars.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543926782221" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543926897256" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../TelegramBotsExample-master" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -898,12 +889,12 @@
       <workItem from="1543604082680" duration="37000" />
       <workItem from="1543604158909" duration="12816000" />
       <workItem from="1543745567428" duration="18214000" />
-      <workItem from="1543921151182" duration="4638000" />
+      <workItem from="1543921151182" duration="4940000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="73736000" />
+    <option name="totallyTimeSpent" value="74038000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -916,7 +907,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Designer" order="0" />
       <window_info id="Build Variants" order="1" side_tool="true" />
@@ -933,7 +923,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.42486086" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.3283859" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.99257886" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.99257886" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.3283859" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.3283859" />
       <window_info anchor="bottom" id="Database Changes" order="11" weight="0.3283859" />
@@ -1269,7 +1259,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/HtmlParser/EjBot.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="56">
-          <caret line="76" column="20" selection-start-line="76" selection-start-column="20" selection-end-line="76" selection-end-column="20" />
+          <caret line="76" selection-start-line="76" selection-end-line="76" />
         </state>
       </provider>
     </entry>
