@@ -7,7 +7,7 @@ import java.sql.*;
 
 public class ConnectionDB {
     private static final String LOGTAG = "CONNECTIONDB";
-    private Connection currentConnction;
+    private static Connection currentConnction;
 
     public ConnectionDB(){
         this.currentConnction = openConnection();
@@ -41,5 +41,9 @@ public class ConnectionDB {
         } catch (SQLException e) {
             BotLogger.error(LOGTAG, "closeConnetion failed");
         }
+    }
+
+    public Connection getCurrentConnction() {
+        return currentConnction;
     }
 }

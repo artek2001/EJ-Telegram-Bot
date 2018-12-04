@@ -2,6 +2,7 @@ package com.artek.Database;
 
 import org.telegram.telegrambots.meta.logging.BotLogger;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -29,7 +30,17 @@ public class DBManager {
         else {
             currentInstance = instance;
         }
+
+        //TODO BAD CODE
+        try {
+            if (connection.getCurrentConnction().isClosed()) {
+                connection = new ConnectionDB();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return currentInstance;
+
     }
 
     public boolean setUserStateForBot(Integer userId, String login, String password, boolean isActive) {
@@ -86,7 +97,7 @@ public class DBManager {
         }
 
         catch (SQLException e) {
-            BotLogger.error("SQL_EXCEPTION", "Error in userSetActive method");
+            BotLogger.error("SQL_EXCEPTION", "Error in userGetActive method");
         }
         return status == 1;
     }
@@ -101,6 +112,7 @@ public class DBManager {
         }
 
         catch (SQLException e) {
+
             BotLogger.error("SQL_EXCEPTION", "error in setUserStateForBot(Integer userId, boolean isActive) for userId = " + userId);
         }
         return changedRows > 0;

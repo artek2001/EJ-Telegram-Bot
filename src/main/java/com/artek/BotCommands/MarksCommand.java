@@ -1,5 +1,6 @@
 package com.artek.BotCommands;
 
+import com.artek.Database.ConnectionDB;
 import com.artek.Database.DBManager;
 import com.artek.HtmlParser.Parser;
 import com.jaunt.NotFound;
@@ -12,6 +13,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.meta.logging.BotLogger;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
