@@ -73,6 +73,7 @@ public class EjBot extends TelegramLongPollingBot implements ICommandRegister{
     @Override
     public void onUpdateReceived(Update update) {
         if (update.hasMessage()) {
+
             Message message = update.getMessage();
             if (message.isCommand() && !filter(message)) {
                 if (!defaultCommandRegistry.executeCommand(this, message)) {

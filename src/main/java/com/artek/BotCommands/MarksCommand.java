@@ -14,6 +14,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.meta.logging.BotLogger;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,29 +31,24 @@ public class MarksCommand extends BotCommand {
     @Override
     public void execute(AbsSender sender, User userFrom, Chat chatFrom, String[] args) {
         StringBuilder messageReposonse = new StringBuilder();
-        DBManager dbManager = DBManager.getInstance();
-
-        try {
-            dbManager.getConnectionDB().establichNewCurrentConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
+//        DBManager dbManager = DBManager.getInstance();
+        DBManager dbManager = new DBManager();
         if (dbManager.getUserStateForBot(userFrom.getId())) {
             Map<String, ArrayList<String>> allMarks = null;
             try {
                 allMarks = new Parser().allDepsMarks(userFrom.getId());
+                for (Map.Entry<String, ArrayList<String>> depEntry : allMarks.entrySet()) {
+                    messageReposonse.append("***" + depEntry.getKey() + ": ***" + "\n");
+                    messageReposonse.append(String.join(",", depEntry.getValue()));
+                    messageReposonse.append("\n");
+
+                }
             } catch (IOException | ResponseException | NotFound e) {
                 BotLogger.error(LOGTAG, "Exception in MarksCommand class");
             }
 
 
-            for (Map.Entry<String, ArrayList<String>> depEntry : allMarks.entrySet()) {
-                messageReposonse.append("***" + depEntry.getKey() + ": ***" + "\n");
-                messageReposonse.append(String.join(",", depEntry.getValue()));
-                messageReposonse.append("\n");
 
-            }
         } else {
             messageReposonse.append("You are not using bot to use this command" + "\n" + "Use /start to start using the bot");
 
@@ -67,5 +63,7 @@ public class MarksCommand extends BotCommand {
         } catch (TelegramApiException e) {
             BotLogger.error(LOGTAG, "Exception in MarksCommand. Message wasn't sent");
         }
+
+
     }
 }

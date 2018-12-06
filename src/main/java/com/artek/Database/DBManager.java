@@ -66,6 +66,7 @@ public class DBManager {
                 credentials[0] = resultSet.getString("login");
                 credentials[1] = resultSet.getString("password");
             }
+
             return credentials;
         }
 
@@ -88,10 +89,12 @@ public class DBManager {
                 status = resultSet.getInt("isActive");
             }
 
+
         }
 
         catch (SQLException e) {
             BotLogger.error("SQL_EXCEPTION", "Error in userGetActive method");
+            BotLogger.error("SQL_EXCEPTION", e.getSQLState());
         }
         return status == 1;
     }

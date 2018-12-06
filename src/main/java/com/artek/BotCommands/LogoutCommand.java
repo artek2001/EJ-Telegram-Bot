@@ -21,14 +21,8 @@ public class LogoutCommand extends BotCommand {
     public void execute(AbsSender sender, User userFrom, Chat chatFrom, String[] args) {
         DBManager dbManager = DBManager.getInstance();
 
-        try {
-            dbManager.getConnectionDB().establichNewCurrentConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-
         StringBuilder messageResponse = new StringBuilder();
+
         if (dbManager.getUserStateForBot(userFrom.getId())) {
             dbManager.setUserStateForBot(userFrom.getId(), 0);
             messageResponse.append("You are successfully logged out");

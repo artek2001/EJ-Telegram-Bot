@@ -29,12 +29,6 @@ public class StartCommand extends BotCommand{
         SendMessage message = new SendMessage();
         message.setChatId(chatFrom.getId().toString());
 
-        try {
-            dbManager.getConnectionDB().establichNewCurrentConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
 
         if (args == null || args.length < 2) {
             messageResponse.append("To start the bot, type:" + "\n" + "/start login password");

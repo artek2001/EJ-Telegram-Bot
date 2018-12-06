@@ -13,14 +13,10 @@ import java.sql.*;
 public class ConnectionDB {
     private static final String LOGTAG = "CONNECTIONDB";
     private static Connection currentConnction;
-    private C3p0DataSource dataSource;
+    public C3p0DataSource dataSource;
 
     public ConnectionDB(){
-        try {
-            openConnectionWithC3p0();
-        } catch (SQLException e) {
-            BotLogger.error(LOGTAG, "Error in openConnection method");
-        }
+        openConnectionWithC3p0();
 //        this.currentConnction = openConnection();
 
 //        try {
@@ -31,7 +27,7 @@ public class ConnectionDB {
 //        this.currentConnction = openConnection();
     }
 
-    private Connection openConnectionWithC3p0() throws SQLException {
+    private void openConnectionWithC3p0() {
         dataSource = new C3p0DataSource();
         ComboPooledDataSource pooledDataSource = dataSource.getComboPooledDataSource();
         try {
@@ -46,8 +42,12 @@ public class ConnectionDB {
         } catch (PropertyVetoException e) {
             BotLogger.error(LOGTAG, "Error in static method in DataSource class");
         }
-        currentConnction = pooledDataSource.getConnection();
-        return currentConnction;
+        try {
+            currentConnction = dataSource.getComboPooledDataSource().getConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private Connection openConnection() {
@@ -64,7 +64,6 @@ public class ConnectionDB {
     }
 
     public PreparedStatement getPreparedStatement(String query) throws SQLException {
-
         return currentConnction.prepareStatement(query);
     }
 
@@ -86,6 +85,7 @@ public class ConnectionDB {
     }
 
     public void establichNewCurrentConnection() throws SQLException {
+
         currentConnction = dataSource.getComboPooledDataSource().getConnection();
     }
 }
