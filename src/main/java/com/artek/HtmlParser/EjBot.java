@@ -5,6 +5,7 @@ import com.artek.BotCommands.LogoutCommand;
 import com.artek.BotCommands.MarksCommand;
 import com.artek.BotCommands.StartCommand;
 import com.artek.Config;
+import com.artek.Database.DBManager;
 import com.artek.ICommand;
 import com.artek.ICommandRegister;
 import org.apache.http.HttpEntity;
@@ -36,6 +37,7 @@ public class EjBot extends TelegramLongPollingBot implements ICommandRegister{
     private final CommandRegistry defaultCommandRegistry;
 
     public EjBot() {
+        new DBManager();
         this.defaultCommandRegistry = new CommandRegistry(false, getBotUsername());
 
         registerCommand(new StartCommand());

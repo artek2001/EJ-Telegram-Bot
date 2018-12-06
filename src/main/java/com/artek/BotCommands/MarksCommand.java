@@ -1,5 +1,6 @@
 package com.artek.BotCommands;
 
+import com.artek.C3p0DataSource;
 import com.artek.Database.ConnectionDB;
 import com.artek.Database.DBManager;
 import com.artek.HtmlParser.Parser;
@@ -31,6 +32,12 @@ public class MarksCommand extends BotCommand {
         StringBuilder messageReposonse = new StringBuilder();
         DBManager dbManager = DBManager.getInstance();
 
+        try {
+            dbManager.getConnectionDB().establichNewCurrentConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         if (dbManager.getUserStateForBot(userFrom.getId())) {
             Map<String, ArrayList<String>> allMarks = null;
             try {
@@ -40,18 +47,21 @@ public class MarksCommand extends BotCommand {
             }
 
 
-            for(Map.Entry<String, ArrayList<String>> depEntry: allMarks.entrySet()) {
-                messageReposonse.append(depEntry.getKey() + ": " + String.join(",", depEntry.getValue()) + '\n');
+            for (Map.Entry<String, ArrayList<String>> depEntry : allMarks.entrySet()) {
+                messageReposonse.append("***" + depEntry.getKey() + ": ***" + "\n");
+                messageReposonse.append(String.join(",", depEntry.getValue()));
+                messageReposonse.append("\n");
+
             }
-        }
-        else {
+        } else {
             messageReposonse.append("You are not using bot to use this command" + "\n" + "Use /start to start using the bot");
+
         }
 
         SendMessage message = new SendMessage();
         message.setChatId(chatFrom.getId().toString());
         message.setText(messageReposonse.toString());
-
+        message.enableMarkdown(true);
         try {
             sender.execute(message);
         } catch (TelegramApiException e) {

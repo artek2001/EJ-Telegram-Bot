@@ -2,7 +2,6 @@ package com.artek.Database;
 
 import org.telegram.telegrambots.meta.logging.BotLogger;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,9 +11,11 @@ public class DBManager {
     private static volatile DBManager instance;
     private static volatile ConnectionDB connection;
 
-    private  DBManager() {
+
+    public DBManager() {
         connection = new ConnectionDB();
     }
+
 
     public static DBManager getInstance() {
         final DBManager currentInstance;
@@ -29,15 +30,6 @@ public class DBManager {
         }
         else {
             currentInstance = instance;
-        }
-
-        //TODO BAD CODE
-        try {
-            if (connection.getCurrentConnction().isClosed()) {
-                connection = new ConnectionDB();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
         return currentInstance;
 
@@ -88,12 +80,14 @@ public class DBManager {
         int status = -1;
 
         try {
+
             final PreparedStatement preparedStatement = connection.getPreparedStatement("SELECT isActive FROM users WHERE userId=?");
             preparedStatement.setInt(1, userId);
             final ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 status = resultSet.getInt("isActive");
             }
+
         }
 
         catch (SQLException e) {
@@ -118,4 +112,7 @@ public class DBManager {
         return changedRows > 0;
     }
 
+    public ConnectionDB getConnectionDB() {
+        return connection;
+    }
 }

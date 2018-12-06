@@ -11,6 +11,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.meta.logging.BotLogger;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class StartCommand extends BotCommand{
 
@@ -27,6 +28,12 @@ public class StartCommand extends BotCommand{
         StringBuilder messageResponse = new StringBuilder();
         SendMessage message = new SendMessage();
         message.setChatId(chatFrom.getId().toString());
+
+        try {
+            dbManager.getConnectionDB().establichNewCurrentConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
 
         if (args == null || args.length < 2) {
