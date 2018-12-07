@@ -37,7 +37,6 @@ public class EjBot extends TelegramLongPollingBot implements ICommandRegister{
     private final CommandRegistry defaultCommandRegistry;
 
     public EjBot() {
-        new DBManager();
         this.defaultCommandRegistry = new CommandRegistry(false, getBotUsername());
 
         registerCommand(new StartCommand());

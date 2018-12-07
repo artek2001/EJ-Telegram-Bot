@@ -1,7 +1,5 @@
 package com.artek.BotCommands;
 
-import com.artek.C3p0DataSource;
-import com.artek.Database.ConnectionDB;
 import com.artek.Database.DBManager;
 import com.artek.HtmlParser.Parser;
 import com.jaunt.NotFound;
@@ -14,10 +12,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.meta.logging.BotLogger;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Map;
 
 public class MarksCommand extends BotCommand {
@@ -32,7 +27,8 @@ public class MarksCommand extends BotCommand {
     public void execute(AbsSender sender, User userFrom, Chat chatFrom, String[] args) {
         StringBuilder messageReposonse = new StringBuilder();
 //        DBManager dbManager = DBManager.getInstance();
-        DBManager dbManager = new DBManager();
+        DBManager dbManager = DBManager.getInstance();
+
         if (dbManager.getUserStateForBot(userFrom.getId())) {
             Map<String, ArrayList<String>> allMarks = null;
             try {

@@ -1,7 +1,9 @@
 package com.artek.Database;
 
+import com.artek.DataSource;
 import org.telegram.telegrambots.meta.logging.BotLogger;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,11 +11,11 @@ import java.sql.SQLException;
 public class DBManager {
     private static final String LOGTAG = "DATABASEMANAGER";
     private static volatile DBManager instance;
-    private static volatile ConnectionDB connection;
+    private static volatile ConnectionDB connectionDB;
 
 
     public DBManager() {
-        connection = new ConnectionDB();
+        connectionDB = new ConnectionDB();
     }
 
 
@@ -38,8 +40,8 @@ public class DBManager {
     public boolean setUserStateForBot(Integer userId, String login, String password, boolean isActive) {
         int updatedRows = 0;
 
-        try {
-            final PreparedStatement preparedStatement = connection.getPreparedStatement("INSERT INTO users (userId, login, password, isActive) VALUES (?,?,?,?) ON DUPLICATE KEY UPDATE isActive=?");
+        try (Connection connection = DBManager.getInstance().getConnectionDB().establichNewCurrentConnection()){
+            final PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO users (userId, login, password, isActive) VALUES (?,?,?,?) ON DUPLICATE KEY UPDATE isActive=?");
             preparedStatement.setInt(1, userId);
             preparedStatement.setString(2, login);
             preparedStatement.setString(3, password);
@@ -58,8 +60,8 @@ public class DBManager {
 
     public String[] getUserCredentialsById(Integer userId) {
         String[] credentials = new String[2];
-        try {
-            final PreparedStatement preparedStatement = connection.getPreparedStatement("SELECT login, password FROM  users WHERE userId=?");
+        try(Connection connection = DBManager.getInstance().getConnectionDB().establichNewCurrentConnection()) {
+            final PreparedStatement preparedStatement = connection.prepareStatement("SELECT login, password FROM  users WHERE userId=?");
             preparedStatement.setInt(1, userId);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
@@ -80,9 +82,9 @@ public class DBManager {
     public boolean getUserStateForBot(Integer userId) {
         int status = -1;
 
-        try {
+        try (Connection connection = DBManager.getInstance().getConnectionDB().establichNewCurrentConnection()){
 
-            final PreparedStatement preparedStatement = connection.getPreparedStatement("SELECT isActive FROM users WHERE userId=?");
+            final PreparedStatement preparedStatement = connection.prepareStatement("SELECT isActive FROM users WHERE userId=?");
             preparedStatement.setInt(1, userId);
             final ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
@@ -101,8 +103,8 @@ public class DBManager {
 
     public boolean setUserStateForBot(Integer userId, Integer isActive) {
         int changedRows = 0;
-        try {
-            final PreparedStatement preparedStatement = connection.getPreparedStatement("UPDATE users SET isActive = ? WHERE userId = ?");
+        try(Connection connection = DBManager.getInstance().getConnectionDB().establichNewCurrentConnection()) {
+            final PreparedStatement preparedStatement = connection.prepareStatement("UPDATE users SET isActive = ? WHERE userId = ?");
             preparedStatement.setInt(1, isActive);
             preparedStatement.setInt(2, userId);
             changedRows = preparedStatement.executeUpdate();
@@ -116,6 +118,6 @@ public class DBManager {
     }
 
     public ConnectionDB getConnectionDB() {
-        return connection;
+        return connectionDB;
     }
 }
