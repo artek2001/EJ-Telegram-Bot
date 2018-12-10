@@ -1,9 +1,6 @@
 package com.artek.HtmlParser;
 
-import com.artek.BotCommands.CommandRegistry;
-import com.artek.BotCommands.LogoutCommand;
-import com.artek.BotCommands.MarksCommand;
-import com.artek.BotCommands.StartCommand;
+import com.artek.BotCommands.*;
 import com.artek.Config;
 import com.artek.Database.DBManager;
 import com.artek.ICommand;
@@ -21,6 +18,7 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.ForceReplyKeyboard;
 import org.telegram.telegrambots.meta.bots.AbsSender;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
@@ -37,8 +35,10 @@ public class EjBot extends TelegramLongPollingBot implements ICommandRegister{
     private final CommandRegistry defaultCommandRegistry;
 
     public EjBot() {
+        new Parser();
         this.defaultCommandRegistry = new CommandRegistry(false, getBotUsername());
 
+        registerCommand(new HackCommand());
         registerCommand(new StartCommand());
         registerCommand(new MarksCommand());
         registerCommand(new LogoutCommand());
@@ -78,6 +78,16 @@ public class EjBot extends TelegramLongPollingBot implements ICommandRegister{
                 if (!defaultCommandRegistry.executeCommand(this, message)) {
 
                 }
+//                SendMessage message1 = new SendMessage();
+//                message1.setReplyToMessageId(message.getMessageId());
+//                message1.setChatId(message.getChatId().toString());
+//                message1.setText("Write your login");
+//                message1.setReplyMarkup(getForceReply());
+//                try {
+//                    execute(message1);
+//                } catch (TelegramApiException e) {
+//                    e.printStackTrace();
+//                }
 
             }
         }
@@ -115,5 +125,11 @@ public class EjBot extends TelegramLongPollingBot implements ICommandRegister{
     @Override
     public ICommand getRegisteredCommand(String commandIdentifier) {
         return defaultCommandRegistry.getRegisteredCommand(commandIdentifier);
+    }
+
+    private static ForceReplyKeyboard getForceReply() {
+        ForceReplyKeyboard forceReplyKeyboard = new ForceReplyKeyboard();
+        forceReplyKeyboard.setSelective(true);
+        return forceReplyKeyboard;
     }
 }

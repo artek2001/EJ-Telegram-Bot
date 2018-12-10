@@ -4,7 +4,6 @@ import com.artek.HtmlParser.EjBot;
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import org.telegram.telegrambots.meta.generics.LongPollingBot;
 import org.telegram.telegrambots.meta.logging.BotLogger;
 
 import java.util.logging.ConsoleHandler;

@@ -2,7 +2,6 @@ package com.artek.BotCommands;
 
 import com.artek.Database.DBManager;
 import com.artek.HtmlParser.EjBot;
-import com.artek.HtmlParser.Parser;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Chat;
 import org.telegram.telegrambots.meta.api.objects.User;
@@ -11,11 +10,10 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.meta.logging.BotLogger;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 public class StartCommand extends BotCommand{
 
-    private static final String LOGTAG = "START_COMMAND";
+    private static  final String LOGTAG = "START_COMMAND";
 
 
     public StartCommand() {
