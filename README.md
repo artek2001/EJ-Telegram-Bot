@@ -8,3 +8,5 @@ This bot uses:
 * HikariCP for connection pooling
 * Apache HttpComponents for making http requests
 * Jaunt library for parsing html web pages
+
+[Link](t.me/ejgrsmu_bot) to the bot
