@@ -9,4 +9,10 @@ This bot uses:
 * Apache HttpComponents for making http requests
 * Jaunt library for parsing html web pages
 
+Abilites of the bot:
+- [x] Login via `/start login password` command
+- [x] Get all marks via `/allmarks` command
+- [x] Logout from the bot via `logout`
+
+
 [Link](https://t.me/ejgrsmu_bot) to the bot
