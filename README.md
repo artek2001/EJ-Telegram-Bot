@@ -9,4 +9,4 @@ This bot uses:
 * Apache HttpComponents for making http requests
 * Jaunt library for parsing html web pages
 
-[Link](t.me/ejgrsmu_bot) to the bot
+[Link](https://t.me/ejgrsmu_bot) to the bot
