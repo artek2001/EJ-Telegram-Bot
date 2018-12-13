@@ -1,6 +1,8 @@
 package com.artek;
 
 import com.artek.HtmlParser.EjBot;
+import com.artek.SessionFactory.SessionFactoryUtil;
+import org.hibernate.Session;
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;

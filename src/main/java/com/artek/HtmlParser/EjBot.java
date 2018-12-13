@@ -5,6 +5,8 @@ import com.artek.Config;
 import com.artek.Database.DBManager;
 import com.artek.ICommand;
 import com.artek.ICommandRegister;
+import com.artek.Models.User;
+import com.artek.Models.UserDAO;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -78,6 +80,9 @@ public class EjBot extends TelegramLongPollingBot implements ICommandRegister{
                 if (!defaultCommandRegistry.executeCommand(this, message)) {
 
                 }
+
+
+
 //                SendMessage message1 = new SendMessage();
 //                message1.setReplyToMessageId(message.getMessageId());
 //                message1.setChatId(message.getChatId().toString());

@@ -1,5 +1,6 @@
 package com.artek.HtmlParser;
 
+import com.artek.Dao.ManagerDAO;
 import com.artek.Database.DBManager;
 import com.artek.IParser;
 import com.jaunt.*;
@@ -33,7 +34,10 @@ public class Parser implements IParser {
         HttpPost post = new HttpPost("http://ej.grsmu.by/prosm_ocenki_stud.php");
 
         //user credentials[login, password]
-        String[] credentials = DBManager.getInstance().getUserCredentialsById(userId);
+        ManagerDAO managerDAO = new ManagerDAO();
+        String[] credentials = managerDAO.getUserCredentials(userId);
+
+        
         String login = credentials[0];
         String password = credentials[1];
 

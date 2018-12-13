@@ -1,5 +1,6 @@
 package com.artek.BotCommands;
 
+import com.artek.Dao.ManagerDAO;
 import com.artek.Database.DBManager;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Chat;
@@ -19,12 +20,12 @@ public class LogoutCommand extends BotCommand {
 
     @Override
     public void execute(AbsSender sender, User userFrom, Chat chatFrom, String[] args) {
-        DBManager dbManager = DBManager.getInstance();
+        ManagerDAO managerDAO = ManagerDAO.getInstance();
 
         StringBuilder messageResponse = new StringBuilder();
 
-        if (dbManager.getUserStateForBot(userFrom.getId())) {
-            dbManager.setUserStateForBot(userFrom.getId(), 0);
+        if (managerDAO.isUserActive(userFrom.getId())) {
+            managerDAO.setIsActiveForUser(0, userFrom.getId());
             messageResponse.append("You are successfully logged out");
         }
 

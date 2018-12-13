@@ -1,9 +1,13 @@
 package com.artek.BotCommands;
 
+import com.artek.Dao.ManagerDAO;
 import com.artek.Database.DBManager;
 import com.artek.HtmlParser.Parser;
+import com.artek.SessionFactory.SessionFactoryUtil;
 import com.jaunt.NotFound;
 import com.jaunt.ResponseException;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Chat;
 import org.telegram.telegrambots.meta.api.objects.User;
@@ -26,10 +30,10 @@ public class MarksCommand extends BotCommand {
     @Override
     public void execute(AbsSender sender, User userFrom, Chat chatFrom, String[] args) {
         StringBuilder messageReposonse = new StringBuilder();
-//        DBManager dbManager = DBManager.getInstance();
-        DBManager dbManager = DBManager.getInstance();
 
-        if (dbManager.getUserStateForBot(userFrom.getId())) {
+        ManagerDAO managerDAO = ManagerDAO.getInstance();
+
+        if (managerDAO.isUserActive(userFrom.getId())) {
             Map<String, ArrayList<String>> allMarks = null;
             try {
                 allMarks = new Parser().allDepsMarks(userFrom.getId());
@@ -49,6 +53,7 @@ public class MarksCommand extends BotCommand {
             messageReposonse.append("You are not using bot to use this command" + "\n" + "Use /start to start using the bot");
 
         }
+
 
         SendMessage message = new SendMessage();
         message.setChatId(chatFrom.getId().toString());

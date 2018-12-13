@@ -1,5 +1,6 @@
 package com.artek.BotCommands;
 
+import com.artek.Dao.ManagerDAO;
 import com.artek.Database.DBManager;
 import com.artek.HtmlParser.EjBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -22,7 +23,7 @@ public class StartCommand extends BotCommand{
 
     @Override
     public void execute(AbsSender sender, User userFrom, Chat chatFrom, String[] args) {
-        DBManager dbManager = DBManager.getInstance();
+        ManagerDAO managerDAO = ManagerDAO.getInstance();
         StringBuilder messageResponse = new StringBuilder();
         SendMessage message = new SendMessage();
         message.setChatId(chatFrom.getId().toString());
@@ -33,14 +34,14 @@ public class StartCommand extends BotCommand{
         }
 
         else {
-            if (dbManager.getUserStateForBot(userFrom.getId())) {
+            if (managerDAO.isUserActive(userFrom.getId())) {
                 messageResponse.append("You are already registered");
             }
             else {
                 try {
                     if (EjBot.checkConnection(args[0], args[1])) {
                         messageResponse.append("Successfully logged in");
-                        dbManager.setUserStateForBot(userFrom.getId(),args[0], args[1], true);
+                        managerDAO.addUser(userFrom.getId(),args[0], args[1], true);
                     }
                     else {
                         messageResponse.append("Wrong login or password");
