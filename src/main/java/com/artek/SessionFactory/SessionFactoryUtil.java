@@ -12,18 +12,23 @@ public class SessionFactoryUtil {
 
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
-            try {
-                Configuration configuration = new Configuration().configure();
-                configuration.addAnnotatedClass(User.class);
-                StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder();
+            build();
+        }
+        return sessionFactory;
+    }
 
-                builder.applySettings(configuration.getProperties());
+    public static SessionFactory build() {
+        try {
+            Configuration configuration = new Configuration().configure();
+            configuration.addAnnotatedClass(User.class);
+            StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder();
 
-                sessionFactory = configuration.buildSessionFactory(builder.build());
-            }
-            catch (Exception e) {
+            builder.applySettings(configuration.getProperties());
 
-            }
+            sessionFactory = configuration.buildSessionFactory(builder.build());
+        }
+        catch (Exception e) {
+
         }
         return sessionFactory;
     }

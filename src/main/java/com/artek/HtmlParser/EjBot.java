@@ -7,6 +7,7 @@ import com.artek.ICommand;
 import com.artek.ICommandRegister;
 import com.artek.Models.User;
 import com.artek.Models.UserDAO;
+import com.artek.SessionFactory.SessionFactoryUtil;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -16,6 +17,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.hibernate.SessionFactory;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
@@ -39,6 +41,8 @@ public class EjBot extends TelegramLongPollingBot implements ICommandRegister{
     public EjBot() {
         new Parser();
         this.defaultCommandRegistry = new CommandRegistry(false, getBotUsername());
+
+        SessionFactory sessionFactory = SessionFactoryUtil.build();
 
         registerCommand(new HackCommand());
         registerCommand(new StartCommand());
