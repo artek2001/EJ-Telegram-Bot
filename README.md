@@ -8,11 +8,14 @@ This bot uses:
 * HikariCP for connection pooling
 * Apache HttpComponents for making http requests
 * Jaunt library for parsing html web pages
+* Hibernate for ORM representation
+* Google cloud sql as Database
 
 Abilites of the bot:
 - [x] Login via `/start login password` command
 - [x] Get all marks via `/allmarks` command
 - [x] Logout from the bot via `logout`
-
+- [x] Using General Keyboard and Inline Keyboard
+- [] Making 'Cache' feature to optimize sql queries
 
 [Link](https://t.me/ejgrsmu_bot) to the bot
