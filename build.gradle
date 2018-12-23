@@ -1,3 +1,13 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.google.appengine:gradle-appengine-plugin:1.9.59'
+
+    }
+}
 
 plugins {
     id "com.github.johnrengelman.shadow" version "4.0.3"
@@ -18,10 +28,9 @@ repositories {
     mavenCentral()
 }
 
-
+apply plugin: 'appengine'
 
 dependencies {
-
     compile files(fileTree(dir: 'libs', includes: ['*.jar']))
 
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.13'
@@ -39,8 +48,14 @@ dependencies {
     compile "org.telegram:telegrambots:4.1"
     testCompile group: 'junit', name: 'junit', version: '4.12'
 
-}
+    compile group: 'com.google.cloud.sql', name: 'mysql-socket-factory', version: '1.0.11'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.7'
+    compile group: 'org.hibernate', name: 'hibernate-ehcache', version: '5.3.7.Final'
+    compile group: 'com.google.appengine', name: 'appengine-api-1.0-sdk', version: '1.9.70'
+    compile group: 'com.google.appengine', name: 'gradle-appengine-plugin', version: '1.9.59'
+    appengineSdk 'com.google.appengine:appengine-java-sdk:1.9.59'
 
+}
 jar {
     manifest {
         attributes(
@@ -52,4 +67,22 @@ jar {
 
 task stage {
     dependsOn installDist
+}
+
+appengine {
+    httpPort = 8085
+
+    appcfg {
+        email = 'artek2001@gmail.com'
+        passIn = true
+
+        logs {
+            severity = 1
+            outputFile = file('mylogs.txt')
+        }
+
+        app {
+            id = 'artekio-43540'
+        }
+    }
 }

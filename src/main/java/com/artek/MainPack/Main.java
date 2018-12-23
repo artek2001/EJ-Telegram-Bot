@@ -1,8 +1,5 @@
-package com.artek;
+package com.artek.MainPack;
 
-import com.artek.HtmlParser.EjBot;
-import com.artek.SessionFactory.SessionFactoryUtil;
-import org.hibernate.Session;
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
@@ -25,7 +22,10 @@ public class Main {
             TelegramBotsApi api = new TelegramBotsApi();
 
             try {
-                api.registerBot(new EjBot());
+                EjBot ejBot = new EjBot();
+                EjBot.setInstance(ejBot);
+
+                api.registerBot(ejBot);
             } catch (TelegramApiException e) {
                     BotLogger.error(LOGTAG, e);
             }

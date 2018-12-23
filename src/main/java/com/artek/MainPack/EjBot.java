@@ -1,15 +1,14 @@
-package com.artek.HtmlParser;
+package com.artek.MainPack;
 
 import com.artek.BotCommands.*;
-import com.artek.CachedInfo;
-import com.artek.Config;
+import com.artek.Database.Config;
 import com.artek.Dao.ManagerDAO;
-import com.artek.Database.DBManager;
-import com.artek.ICommand;
-import com.artek.ICommandRegister;
-import com.artek.Models.User;
-import com.artek.Models.UserDAO;
+import com.artek.BotCommands.ICommand;
+import com.artek.BotCommands.ICommandRegister;
 import com.artek.SessionFactory.SessionFactoryUtil;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -19,25 +18,26 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
-import org.hibernate.SessionFactory;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
+import org.telegram.telegrambots.meta.api.methods.AnswerCallbackQuery;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageReplyMarkup;
+import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageText;
+import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.ForceReplyKeyboard;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboard;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.*;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.meta.bots.AbsSender;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.meta.logging.BotLogger;
 
+import javax.security.auth.callback.Callback;
 import java.io.IOException;
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 import java.util.function.BiConsumer;
 
 public class EjBot extends TelegramLongPollingBot implements ICommandRegister {
@@ -47,12 +47,20 @@ public class EjBot extends TelegramLongPollingBot implements ICommandRegister {
     private final CommandRegistry defaultCommandRegistry;
 
     //states
+    private static volatile EjBot instance;
     private static final int START_STATE = 0;
     private static final int MAIN_MENU = 1;
     private static final int ALL_SUBJECTS = 2;
     private static final int ALL_MARKS = 3;
     private static final int TIMETABLE = 4;
 
+    public static EjBot getInstance() {
+        return instance;
+    }
+
+    public static void setInstance(EjBot ejBot) {
+        EjBot.instance = ejBot;
+    }
 
     public EjBot() {
         new Parser();
@@ -106,26 +114,28 @@ public class EjBot extends TelegramLongPollingBot implements ICommandRegister {
                     }
 
 
-    //                SendMessage message1 = new SendMessage();
-    //                message1.setReplyToMessageId(message.getMessageId());
-    //                message1.setChatId(message.getChatId().toString());
-    //                message1.setText("Write your login");
-    //                message1.setReplyMarkup(getForceReply());
-    //                try {
-    //                    execute(message1);
-    //                } catch (TelegramApiException e) {
-    //                    e.printStackTrace();
-    //                }
+                    //                SendMessage message1 = new SendMessage();
+                    //                message1.setReplyToMessageId(message.getMessageId());
+                    //                message1.setChatId(message.getChatId().toString());
+                    //                message1.setText("Write your login");
+                    //                message1.setReplyMarkup(getForceReply());
+                    //                try {
+                    //                    execute(message1);
+                    //                } catch (TelegramApiException e) {
+                    //                    e.printStackTrace();
+                    //                }
 
-                }
-                else {
+                } else {
                     handleIncomingMessage(message);
                 }
+            } else if (update.hasCallbackQuery()) {
+                handleCallBackQuery(update.getCallbackQuery());
             }
         } catch (Exception e) {
             BotLogger.error(LOGTAG, e);
         }
     }
+
 
     private boolean filter(Message message) {
         return false;
@@ -172,10 +182,17 @@ public class EjBot extends TelegramLongPollingBot implements ICommandRegister {
         //TODO final String language
         if (message.isCommand()) {
             defaultCommandRegistry.executeCommand(this, message);
-        } else {
+        }
+
+        else if (state == START_STATE) {
+            return;
+        }
+
+        else {
             SendMessage sendMessageRequest = new SendMessage();
             switch (state) {
-                case START_STATE: break;
+                case START_STATE:
+                    break;
 
                 case MAIN_MENU:
                     sendMessageRequest = messageOnMainMenu(message);
@@ -200,25 +217,19 @@ public class EjBot extends TelegramLongPollingBot implements ICommandRegister {
             if (message.getText().equals(getAllSubjectsCommand())) {
                 sendMessageRequest = onAllSubjectsChoosen(message);
             }
-
-            else if(message.getText().equals(getAllMarksCommand())) {
+            else if (message.getText().equals(getAllMarksCommand())) {
                 sendMessageRequest = onAllMarksChoosen(message);
             }
-
-            else if(message.getText().equals(getTimetableCommand())) {
+            else if (message.getText().equals(getTimetableCommand())) {
                 //sendMessageRequest = onTimetableChoosen();
             }
-
-            else if(message.getText().equals(getLogoutCommand())) {
-                //sendMessageRequest = onLogoutChoosen();
+            else if (message.getText().equals(getLogoutCommand())) {
+                sendMessageRequest = onLogoutChoosen(message);
             }
-
             else {
                 sendMessageRequest = sendChooseOption(message, getMainMenuKeyboard());
             }
-        }
-
-        else {
+        } else {
             sendMessageRequest = sendChooseOption(message, getMainMenuKeyboard());
         }
         return sendMessageRequest;
@@ -240,7 +251,7 @@ public class EjBot extends TelegramLongPollingBot implements ICommandRegister {
         return "Logout";
     }
 
-    private static ReplyKeyboardMarkup getMainMenuKeyboard() {
+    public static ReplyKeyboardMarkup getMainMenuKeyboard() {
         ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
         replyKeyboardMarkup.setSelective(true);
         replyKeyboardMarkup.setResizeKeyboard(true);
@@ -286,52 +297,139 @@ public class EjBot extends TelegramLongPollingBot implements ICommandRegister {
     private static SendMessage onAllSubjectsChoosen(Message message) {
         SendMessage sendMessage = new SendMessage();
         sendMessage.enableMarkdown(true);
-        sendMessage.setText("Choose your subject");
+        sendMessage.setText("Choose your subject:");
 
-        ReplyKeyboardMarkup replyKeyboardMarkup = getAllSubjectsKeyboard(message.getFrom().getId());
+        InlineKeyboardMarkup inlineKeyboardMarkup = getAllSubjectsKeyboard(message.getFrom().getId());
 
-        sendMessage.setReplyMarkup(replyKeyboardMarkup);
+        sendMessage.setReplyMarkup(inlineKeyboardMarkup);
         sendMessage.setChatId(message.getChatId().toString());
-        sendMessage.setReplyToMessageId(message.getMessageId());
+        //sendMessage.setReplyToMessageId(message.getMessageId());
 
-        ManagerDAO.getInstance().setUserState(message.getFrom().getId(), ALL_SUBJECTS);
+        //ManagerDAO.getInstance().setUserState(message.getFrom().getId(), ALL_SUBJECTS);
 
         return sendMessage;
     }
 
-    private static ReplyKeyboardMarkup getAllSubjectsKeyboard(Integer userId) {
-        ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
-        replyKeyboardMarkup.setSelective(true);
-        replyKeyboardMarkup.setResizeKeyboard(true);
-        replyKeyboardMarkup.setOneTimeKeyboard(false);
+    private static InlineKeyboardMarkup getAllSubjectsKeyboard(Integer userId) {
+
+        ArrayList<String> allSubjects = ManagerDAO.getInstance().getAllSubjects(userId);
+        int subjectsCount = allSubjects.size();
+
+        InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> rows = new ArrayList<>();
+
+        for (String subj : allSubjects) {
+
+            List<InlineKeyboardButton> keyboardButtonList = new ArrayList<>();
+            //TODO CallbackQuery
+            keyboardButtonList.add(new InlineKeyboardButton().setText(subj).setCallbackData(String.valueOf(allSubjects.indexOf(subj))));
+            rows.add(keyboardButtonList);
+        }
+
+        inlineKeyboardMarkup.setKeyboard(rows);
+
+        return inlineKeyboardMarkup;
+    }
 
 
-        String allSubjects = ManagerDAO.getInstance().getAllSubjects(userId);
-        ArrayList<String> allSubjectsList = new ArrayList<String>(Arrays.asList(allSubjects.split(",")));
-        int subjectsCount = allSubjectsList.size();
+    //TODO
+    private static EditMessageReplyMarkup getAllSubjectsByPage(Integer userId, int page) {
+        ArrayList<String> allSubjectsList = ManagerDAO.getInstance().getAllSubjects(userId);
 
-        List<KeyboardRow> rows = new ArrayList<>();
-        int pagesFull = subjectsCount / 4;
-        int pagesLeft = (subjectsCount % 4 == 0) ? 1 : 0;
-        int pagesTotal = pagesFull + pagesLeft;
+        InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> rows = new ArrayList<>();
 
-        KeyboardRow nextRow = new KeyboardRow();
-        KeyboardRow firstRow = new KeyboardRow();
-        firstRow.add(allSubjectsList.get(0));
-        firstRow.add(allSubjectsList.get(1));
-        KeyboardRow secondRow = new KeyboardRow();
-        secondRow.add(allSubjectsList.get(2));
-        secondRow.add(allSubjectsList.get(3));
+        for (String subj : allSubjectsList) {
+            List<InlineKeyboardButton> keyboardButtonList = new ArrayList<>();
+            keyboardButtonList.add(new InlineKeyboardButton().setText(subj).setCallbackData(String.valueOf(allSubjectsList.indexOf(subj))));
+            rows.add(keyboardButtonList);
+        }
 
-        nextRow.add("NEXT");
+        EditMessageReplyMarkup editMessageReplyMarkup = new EditMessageReplyMarkup();
+        return editMessageReplyMarkup;
+    }
 
-        rows.add(firstRow);
-        rows.add(secondRow);
-        rows.add(nextRow);
+    private void handleCallBackQuery(CallbackQuery callbackQuery) {
+        try {
+            if (callbackQuery.getData().equals("back_to_allsubjects")) {
+                EditMessageText editMessageText = editMessageWithInlineKeyboard(callbackQuery, "All subjects", null, getAllSubjectsKeyboard(callbackQuery.getFrom().getId()));
+                execute(editMessageText);
 
-        replyKeyboardMarkup.setKeyboard(rows);
+            } else if (callbackQuery.getData().equals("BACK")) {
 
-        return replyKeyboardMarkup;
+            } else {
+                handleOneSingleSubject(callbackQuery);
+            }
+        }
+
+        catch (TelegramApiException e) {
+
+        }
+
+    }
+
+    private void handleOneSingleSubject(CallbackQuery query) {
+        try {
+            String json = ManagerDAO.getInstance().getRecentMarks(query.getFrom().getId());
+            Map<String, ArrayList<String>> map = new ObjectMapper().readValue(json, new TypeReference<Map<String, ArrayList<String>>>(){});
+
+            Collection<String> keys = map.keySet();
+            String[] keysArray = keys.toArray(new String[keys.size()]);
+
+            String chosenSubject = keysArray[Integer.valueOf(query.getData())];
+            ArrayList<String> chosenSubjectList = map.get(chosenSubject);
+
+
+            EditMessageText editMessageText = editMessageWithInlineKeyboard(query, chosenSubject + ":", map.get(chosenSubject), getOneInlineButton(query));
+            execute(editMessageText);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    private static InlineKeyboardMarkup getOneInlineButton(CallbackQuery query) {
+
+        EditMessageText editMessageText = new EditMessageText();
+
+        editMessageText.setChatId(query.getMessage().getChatId().toString());
+        editMessageText.setMessageId(query.getMessage().getMessageId());
+
+        InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
+
+        List<InlineKeyboardButton> line = new ArrayList<>();
+        line.add(new InlineKeyboardButton().setText("Back to all").setCallbackData("back_to_allsubjects"));
+        markup.getKeyboard().add(line);
+
+        return markup;
+    }
+
+    private static EditMessageText editMessageWithInlineKeyboard(CallbackQuery query, String newText, ArrayList<String> marks, InlineKeyboardMarkup newMarkup) {
+        EditMessageText editMessageText = new EditMessageText();
+        editMessageText.setChatId(query.getMessage().getChatId().toString());
+        editMessageText.setMessageId(query.getMessage().getMessageId());
+        editMessageText.setReplyMarkup(newMarkup);
+
+        editMessageText = (marks == null) ? editMessageText.setText(newText) : editMessageText.setText(newText + "\n\n" + String.join(",", marks) + "\n\n" + "Average mark: ");
+
+        return editMessageText;
+    }
+
+    private static SendMessage onLogoutChoosen(Message message) {
+
+        SendMessage sendMessage = null;
+        try {
+            //instance.defaultCommandRegistry.getRegisteredCommand("logout").processMessage(instance, message, null);
+            sendMessage = LogoutCommand.logout(message.getFrom(), message.getChat());
+
+            sendMessage.setText("Successfully logged out");
+            sendMessage.setChatId(message.getChatId().toString());
+            sendMessage.setReplyMarkup(new ReplyKeyboardRemove());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return sendMessage;
     }
 
 

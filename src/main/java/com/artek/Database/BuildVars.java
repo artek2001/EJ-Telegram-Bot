@@ -1,4 +1,4 @@
-package com.artek;
+package com.artek.Database;
 
 public class BuildVars {
     public static final String driverClass = "com.mysql.cj.jdbc.Driver";

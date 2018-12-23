@@ -1,4 +1,4 @@
-package com.artek;
+package com.artek.Database;
 
 public class Config {
     public static final String TOKEN= "735016648:AAE-kBj0w0AadRUia2MWqJyNJqEtQvS16W8";

@@ -1,4 +1,4 @@
-package com.artek;
+package com.artek.BotCommands;
 
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.bots.AbsSender;

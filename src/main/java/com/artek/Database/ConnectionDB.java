@@ -1,11 +1,7 @@
 package com.artek.Database;
 
-import com.artek.BuildVars;
-import com.artek.DataSource;
 import org.telegram.telegrambots.meta.logging.BotLogger;
 
-import javax.xml.crypto.Data;
-import java.beans.PropertyVetoException;
 import java.sql.*;
 
 public class ConnectionDB {

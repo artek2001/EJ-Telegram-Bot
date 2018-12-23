@@ -1,13 +1,11 @@
 package com.artek.BotCommands;
 
 import com.artek.Dao.ManagerDAO;
-import com.artek.Database.DBManager;
-import com.artek.HtmlParser.Parser;
-import com.artek.SessionFactory.SessionFactoryUtil;
+import com.artek.MainPack.Parser;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jaunt.NotFound;
 import com.jaunt.ResponseException;
-import org.hibernate.Session;
-import org.hibernate.query.Query;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Chat;
 import org.telegram.telegrambots.meta.api.objects.User;
@@ -29,30 +27,18 @@ public class MarksCommand extends BotCommand {
 
     @Override
     public void execute(AbsSender sender, User userFrom, Chat chatFrom, String[] args) {
+        long timeExecute = System.currentTimeMillis();
         StringBuilder messageReposonse = new StringBuilder();
 
         ManagerDAO managerDAO = ManagerDAO.getInstance();
 
         if (managerDAO.isUserActive(userFrom.getId())) {
-            Map<String, ArrayList<String>> allMarks = null;
-            try {
-                allMarks = new Parser().allDepsMarks(userFrom.getId());
-                for (Map.Entry<String, ArrayList<String>> depEntry : allMarks.entrySet()) {
-                    messageReposonse.append("***" + depEntry.getKey() + ": ***" + "\n");
-                    messageReposonse.append(String.join(",", depEntry.getValue()));
-                    messageReposonse.append("\n");
-
-                }
-            } catch (IOException | ResponseException | NotFound e) {
-                BotLogger.error(LOGTAG, "Exception in MarksCommand class");
-            }
-
-
-
+            messageReposonse = makeAllMarksRespond(userFrom);
         } else {
             messageReposonse.append("You are not using bot to use this command" + "\n" + "Use /start to start using the bot");
 
         }
+
 
 
         SendMessage message = new SendMessage();
@@ -64,7 +50,26 @@ public class MarksCommand extends BotCommand {
         } catch (TelegramApiException e) {
             BotLogger.error(LOGTAG, "Exception in MarksCommand. Message wasn't sent");
         }
+        BotLogger.info("TIME EXECUTING", Long.toString((System.currentTimeMillis() - timeExecute)));
 
+    }
 
+    public static StringBuilder makeAllMarksRespond(User userFrom) {
+        StringBuilder messageReposonse = new StringBuilder();
+        Map<String, ArrayList<String>> allMarks = null;
+        try {
+            String jsonAllMarks = ManagerDAO.getInstance().getRecentMarks(userFrom.getId());
+
+            allMarks = new ObjectMapper().readValue(jsonAllMarks, new TypeReference<Map<String, ArrayList<String>>>() {});
+            for (Map.Entry<String, ArrayList<String>> depEntry : allMarks.entrySet()) {
+                messageReposonse.append("***" + depEntry.getKey() + ": ***" + "\n");
+                messageReposonse.append(String.join(",", depEntry.getValue()));
+                messageReposonse.append("\n");
+
+            }
+        } catch (IOException e) {
+            BotLogger.error("ERROR", "Exception in MarksCommand class");
+        }
+        return messageReposonse;
     }
 }

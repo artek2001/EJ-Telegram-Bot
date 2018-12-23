@@ -1,8 +1,11 @@
-package com.artek.HtmlParser;
+package com.artek.MainPack;
 
 import com.artek.Dao.ManagerDAO;
-import com.artek.Database.DBManager;
-import com.artek.IParser;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.jaunt.*;
 import com.jaunt.component.Table;
 import org.apache.http.HttpEntity;
@@ -16,8 +19,6 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class Parser implements IParser {
@@ -71,7 +72,11 @@ public class Parser implements IParser {
                 rawNumber++;
             }
         }
-        managerDAO.addAllSubjects(credentials[0], String.join(", ", allDepartments).replaceAll(", ", ","));
+        String json = serializeMarks(allMarks);
+
+        managerDAO.setRecentMarks(credentials[0], json);
+//        managerDAO.addAllSubjects(credentials[0], String.join(", ", allDepartments).replaceAll(", ", ","));
+
         return allMarks;
     }
 
@@ -145,5 +150,20 @@ public class Parser implements IParser {
         userAgent.openContent(htmlString);
 
         return userAgent.doc.getTable("<table>");
+    }
+
+    private static String serializeMarks(Map<String, ArrayList<String>> allMarks) {
+        String mapAsJson = null;
+        try {
+//            ObjectMapper mapper = new ObjectMapper();
+//            for (Map.Entry<String, ArrayList<String>> entry : allMarks.entrySet()) {
+//                mapper.writeValueAsString()
+//            }
+
+            mapAsJson = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(allMarks);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return mapAsJson;
     }
 }

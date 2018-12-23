@@ -20,12 +20,23 @@ public class LogoutCommand extends BotCommand {
 
     @Override
     public void execute(AbsSender sender, User userFrom, Chat chatFrom, String[] args) {
+        SendMessage sendMessage = logout(userFrom, chatFrom);
+
+        try {
+            sender.execute(sendMessage);
+        } catch (TelegramApiException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static SendMessage logout(User userFrom, Chat chatFrom) {
         ManagerDAO managerDAO = ManagerDAO.getInstance();
 
         StringBuilder messageResponse = new StringBuilder();
 
         if (managerDAO.isUserActive(userFrom.getId())) {
             managerDAO.setIsActiveForUser(0, userFrom.getId());
+            managerDAO.setUserState(userFrom.getId(), 0);
             messageResponse.append("You are successfully logged out");
         }
 
@@ -34,10 +45,6 @@ public class LogoutCommand extends BotCommand {
         }
 
         SendMessage message = new SendMessage().setChatId(chatFrom.getId().toString()).setText(messageResponse.toString());
-        try {
-            sender.execute(message);
-        } catch (TelegramApiException e) {
-            BotLogger.error(LOGTAG, "Error in executing LOGOUT COMMAND");
-        }
+        return message;
     }
 }

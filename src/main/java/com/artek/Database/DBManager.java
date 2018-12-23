@@ -1,6 +1,5 @@
 package com.artek.Database;
 
-import com.artek.DataSource;
 import org.telegram.telegrambots.meta.logging.BotLogger;
 
 import java.sql.Connection;

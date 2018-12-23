@@ -1,4 +1,4 @@
-package com.artek;
+package com.artek.MainPack;
 
 import com.jaunt.NotFound;
 import com.jaunt.ResponseException;

@@ -1,5 +1,6 @@
-package com.artek;
+package com.artek.Database;
 
+import com.artek.Database.BuildVars;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 

@@ -1,12 +1,9 @@
 package com.artek.BotCommands;
 
-import com.artek.ICommand;
 import org.telegram.telegrambots.meta.api.objects.Chat;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.User;
 import org.telegram.telegrambots.meta.bots.AbsSender;
-
-import java.io.IOException;
 
 public abstract class BotCommand implements ICommand {
 

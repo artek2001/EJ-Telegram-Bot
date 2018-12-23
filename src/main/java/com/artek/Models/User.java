@@ -1,8 +1,12 @@
 package com.artek.Models;
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 
 @Entity
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Table (name = "users")
 public class User {
 
@@ -19,13 +23,16 @@ public class User {
     @Column(name = "isActive")
     private int isActive;
 
+    @Column(name = "state")
+    private int state;
+
+
     public User() {}
 
-    public User(int userId, String login, String password, int isActive) {
+    public User(int userId, String login, String password, String subjects) {
         this.userId = userId;
         this.login = login;
         this.password = password;
-        this.isActive = isActive;
     }
 
     public int getId() {
@@ -40,12 +47,15 @@ public class User {
         return password;
     }
 
+    public int getState() { return state; }
 
     public int getIsActive() {
         return isActive;
     }
 
     public void setIsActive(int isActive) { this.isActive = isActive; }
+
+    public void setState(int state) { this.state = state; }
 
     public void setId(int userId) {
         this.userId = userId;

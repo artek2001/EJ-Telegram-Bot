@@ -1,8 +1,10 @@
 package com.artek.BotCommands;
 
 import com.artek.Dao.ManagerDAO;
-import com.artek.Database.DBManager;
-import com.artek.HtmlParser.EjBot;
+import com.artek.MainPack.EjBot;
+import com.artek.MainPack.Parser;
+import com.jaunt.NotFound;
+import com.jaunt.ResponseException;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Chat;
 import org.telegram.telegrambots.meta.api.objects.User;
@@ -19,10 +21,24 @@ public class StartCommand extends BotCommand{
 
     public StartCommand() {
         super("/start", "Command to start using bot");
+
     }
 
     @Override
     public void execute(AbsSender sender, User userFrom, Chat chatFrom, String[] args) {
+        //TODO temporary stuff(remove in future)
+        try {
+            new Parser().allDepsMarks(userFrom.getId());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ResponseException e) {
+            e.printStackTrace();
+        } catch (NotFound notFound) {
+            notFound.printStackTrace();
+        }
+
+
+
         ManagerDAO managerDAO = ManagerDAO.getInstance();
         StringBuilder messageResponse = new StringBuilder();
         SendMessage message = new SendMessage();
@@ -41,7 +57,8 @@ public class StartCommand extends BotCommand{
                 try {
                     if (EjBot.checkConnection(args[0], args[1])) {
                         messageResponse.append("Successfully logged in");
-                        managerDAO.addUser(userFrom.getId(),args[0], args[1], true);
+                        managerDAO.addUser(userFrom.getId(),args[0], args[1], true, 1);
+                        message.setReplyMarkup(EjBot.getMainMenuKeyboard());
                     }
                     else {
                         messageResponse.append("Wrong login or password");
