@@ -16,6 +16,6 @@ Abilites of the bot:
 - [x] Get all marks via `/allmarks` command
 - [x] Logout from the bot via `logout`
 - [x] Using General Keyboard and Inline Keyboard
-- [] Making 'Cache' feature to optimize sql queries
+- [ ] Making 'Cache' feature to optimize sql queries
 
 [Link](https://t.me/ejgrsmu_bot) to the bot
