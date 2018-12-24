@@ -1,27 +1,38 @@
 Manifest-Version: 1.0
 Class-Path: jaunt1.5.2.jar mysql-connector-java-8.0.13.jar telegrambots-
- 4.1.jar httpmime-4.5.3.jar httpclient-4.5.6.jar jaxb-runtime-2.3.1.jar 
- hibernate-hikaricp-5.3.7.Final.jar hibernate-core-5.3.7.Final.jar Hikar
- iCP-3.2.0.jar hibernate-commons-annotations-5.1.0.Final.jar protobuf-ja
- va-3.6.1.jar httpcore-4.4.10.jar commons-logging-1.2.jar commons-codec-
- 1.10.jar jaxb-api-2.3.1.jar txw2-2.3.1.jar istack-commons-runtime-3.0.7
- .jar stax-ex-1.8.jar FastInfoset-1.2.15.jar javax.activation-api-1.2.0.
- jar jboss-logging-3.3.2.Final.jar javax.persistence-api-2.2.jar jersey-
- container-grizzly2-http-2.25.1.jar jersey-server-2.25.1.jar jersey-medi
- a-json-jackson-2.25.1.jar jersey-client-2.25.1.jar jersey-media-jaxb-2.
- 25.1.jar jersey-common-2.25.1.jar hk2-locator-2.5.0-b32.jar javassist-3
- .23.1-GA.jar byte-buddy-1.8.17.jar antlr-2.7.7.jar jboss-transaction-ap
- i_1.2_spec-1.1.1.Final.jar jandex-2.0.5.Final.jar classmate-1.3.4.jar d
- om4j-2.1.1.jar slf4j-api-1.7.25.jar telegrambots-meta-4.1.jar jackson-j
- axrs-json-provider-2.8.7.jar jackson-jaxrs-base-2.8.7.jar jackson-modul
- e-jaxb-annotations-2.8.7.jar jackson-databind-2.8.7.jar jackson-annotat
- ions-2.8.0.jar json-20160810.jar commons-io-2.5.jar guice-4.1.0.jar jac
- kson-core-2.8.7.jar jersey-entity-filtering-2.25.1.jar javax.inject-2.5
- .0-b32.jar grizzly-http-server-2.3.28.jar javax.ws.rs-api-2.0.1.jar jav
- ax.annotation-api-1.2.jar hk2-api-2.5.0-b32.jar validation-api-1.1.0.Fi
- nal.jar hk2-utils-2.5.0-b32.jar javax.inject-1.jar aopalliance-1.0.jar 
- guava-19.0.jar jersey-guava-2.25.1.jar osgi-resource-locator-1.0.1.jar 
- grizzly-http-2.3.28.jar aopalliance-repackaged-2.5.0-b32.jar grizzly-fr
- amework-2.3.28.jar
+ 4.1.jar httpmime-4.5.3.jar mysql-socket-factory-1.0.11.jar jdbc-socket-
+ factory-core-1.0.11.jar google-api-services-sqladmin-v1beta4-rev56-1.23
+ .0.jar google-api-client-1.23.0.jar google-oauth-client-1.23.0.jar goog
+ le-http-client-jackson2-1.23.0.jar google-http-client-1.23.0.jar httpcl
+ ient-4.5.6.jar jaxb-runtime-2.3.1.jar hibernate-hikaricp-5.3.7.Final.ja
+ r hibernate-ehcache-5.3.7.Final.jar hibernate-core-5.3.7.Final.jar Hika
+ riCP-3.2.0.jar hibernate-commons-annotations-5.1.0.Final.jar jackson-ja
+ xrs-json-provider-2.8.7.jar telegrambots-meta-4.1.jar jackson-jaxrs-bas
+ e-2.8.7.jar jackson-module-jaxb-annotations-2.8.7.jar jackson-databind-
+ 2.8.7.jar jackson-core-2.9.7.jar gradle-appengine-plugin-1.9.59.jar app
+ engine-local-endpoints-1.9.59.jar appengine-endpoints-1.9.59.jar appeng
+ ine-api-1.0-sdk-1.9.70.jar protobuf-java-3.6.1.jar httpcore-4.4.10.jar 
+ commons-logging-1.2.jar commons-codec-1.10.jar jaxb-api-2.3.1.jar txw2-
+ 2.3.1.jar istack-commons-runtime-3.0.7.jar stax-ex-1.8.jar FastInfoset-
+ 1.2.15.jar javax.activation-api-1.2.0.jar jboss-logging-3.3.2.Final.jar
+  javax.persistence-api-2.2.jar jersey-container-grizzly2-http-2.25.1.ja
+ r jersey-server-2.25.1.jar jersey-media-json-jackson-2.25.1.jar jersey-
+ client-2.25.1.jar jersey-media-jaxb-2.25.1.jar jersey-common-2.25.1.jar
+  hk2-locator-2.5.0-b32.jar javassist-3.23.1-GA.jar byte-buddy-1.8.17.ja
+ r antlr-2.7.7.jar jboss-transaction-api_1.2_spec-1.1.1.Final.jar jandex
+ -2.0.5.Final.jar classmate-1.3.4.jar dom4j-2.1.1.jar ehcache-2.10.3.jar
+  slf4j-api-1.7.25.jar jackson-annotations-2.8.0.jar json-20160810.jar c
+ ommons-io-2.5.jar jnr-unixsocket-0.18.jar gradle-appengine-builder-mode
+ l-0.1.0.jar guice-4.1.0.jar jersey-entity-filtering-2.25.1.jar javax.in
+ ject-2.5.0-b32.jar grizzly-http-server-2.3.28.jar javax.ws.rs-api-2.0.1
+ .jar javax.annotation-api-1.2.jar hk2-api-2.5.0-b32.jar validation-api-
+ 1.1.0.Final.jar guava-20.0.jar jnr-enxio-0.16.jar jnr-posix-3.0.35.jar 
+ jnr-ffi-2.1.4.jar jnr-constants-0.9.8.jar appengine-tools-sdk-1.9.59.ja
+ r servlet-api-2.5.jar hk2-utils-2.5.0-b32.jar javax.inject-1.jar aopall
+ iance-1.0.jar jersey-guava-2.25.1.jar osgi-resource-locator-1.0.1.jar g
+ rizzly-http-2.3.28.jar aopalliance-repackaged-2.5.0-b32.jar jffi-1.2.15
+ .jar jffi-1.2.15-native.jar asm-commons-5.0.3.jar asm-analysis-5.0.3.ja
+ r asm-util-5.0.3.jar asm-tree-5.0.3.jar asm-5.0.3.jar jnr-x86asm-1.0.2.
+ jar grizzly-framework-2.3.28.jar
 Main-Class: com.artek.Main
 

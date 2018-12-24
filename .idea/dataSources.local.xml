@@ -2,7 +2,7 @@
 <project version="4">
   <component name="dataSourceStorageLocal">
     <data-source name="heroku_a2ae7762c153707@us-cdbr-iron-east-01.cleardb.net" uuid="a6853ddb-d07d-4779-a1c3-a0dc9b560377">
-      <database-info product="MySQL" version="5.5.56-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.46 ( Revision: 9cc87a48e75c2d2e87c1a293b2862ce651cb256e )" family="MYSQL" exact-version="5.5.56">
+      <database-info product="MySQL" version="5.5.56-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.46 ( Revision: 9cc87a48e75c2d2e87c1a293b2862ce651cb256e )" dbms="MYSQL" exact-version="5.5.56">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
       </database-info>
@@ -12,12 +12,11 @@
       <introspection-schemas>@:@</introspection-schemas>
     </data-source>
     <data-source name="hibernate.cfg.xml/Hibernate" uuid="de2d4da2-f8ad-40af-8bd0-0d69f77af678">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" family="MYSQL" exact-version="0.0" />
-      <first-sync>true</first-sync>
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" exact-version="0.0" />
       <user-name>b822eaa3f30018</user-name>
     </data-source>
     <data-source name="jdbc:mysql://google/ej_grsmubot?cloudSqlInstance=artekio-43540:europe-west4:artekdbgrsmubot&amp;socketFactory=com.google.cloud.sql.mysql.SocketFactory&amp;useSSL=false&amp;user=artekhound&amp;password=arteking2001" uuid="b383b3c6-35f5-4501-b47b-6b6d82e8f069">
-      <database-info product="MySQL" version="5.7.14-google-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.46 ( Revision: 9cc87a48e75c2d2e87c1a293b2862ce651cb256e )" family="MYSQL" exact-version="5.7.14">
+      <database-info product="MySQL" version="5.7.14-google-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.46 ( Revision: 9cc87a48e75c2d2e87c1a293b2862ce651cb256e )" dbms="MYSQL" exact-version="5.7.14">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
       </database-info>
@@ -27,7 +26,7 @@
       <introspection-schemas>*:@</introspection-schemas>
     </data-source>
     <data-source name="jdbc:mysql://z1ntn1zv0f1qbh8u.cbetxkdyhwsb.us-east-1.rds.amazonaws.com" uuid="703159e9-65cd-4d7e-a57a-419ebc7295eb">
-      <database-info product="MySQL" version="10.1.19-MariaDB" jdbc-version="4.2" driver-name="MariaDB connector/J" driver-version="2.2.1" family="MARIADB" exact-version="10.1.19">
+      <database-info product="MySQL" version="10.1.19-MariaDB" jdbc-version="4.2" driver-name="MariaDB connector/J" driver-version="2.2.1" dbms="MARIADB" exact-version="10.1.19">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
       </database-info>

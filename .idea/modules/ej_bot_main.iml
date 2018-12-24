@@ -4,14 +4,11 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
-          <unit-entry name="hibernate.cfg.xml" value="a6853ddb-d07d-4779-a1c3-a0dc9b560377" />
+          <unit-entry name="hibernate.cfg.xml" />
         </datasource-map>
         <naming-strategy-map />
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/../../src/main/resources/hibernate.cfg.xml" />
       </configuration>
-    </facet>
-    <facet type="google-app-engine" name="Google App Engine">
-      <configuration />
     </facet>
   </component>
 </module>

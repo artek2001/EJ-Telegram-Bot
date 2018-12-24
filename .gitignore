@@ -1,0 +1,5 @@
+build/libs
+out/
+src/main/resources/hibernate.cfg.xml
+.idea/
+src/main/java/Database/BuildVars
