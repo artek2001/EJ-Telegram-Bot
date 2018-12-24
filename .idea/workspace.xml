@@ -589,7 +589,7 @@
     <property name="SearchEverywhereHistoryKey" value="user&#9;FILE&#9;file://C:/Users/User/Desktop/ejbot/src/main/java/com/artek/Models/User.java&#10;Use&#9;FILE&#9;file://C:/Users/User/Desktop/ejbot/src/main/java/com/artek/Models/User.java&#10;DBM&#9;FILE&#9;file://C:/Users/User/Desktop/ejbot/src/main/java/com/artek/Database/DBManager.java&#10;build&#9;FILE&#9;file://C:/Users/User/Desktop/ejbot/build.gradle&#10;Build&#9;FILE&#9;file://C:/Users/User/Desktop/ejbot/src/main/java/com/artek/BuildVars.java&#10;ej&#9;FILE&#9;file://C:/Users/User/Desktop/ejbot/src/main/java/com/artek/HtmlParser/EjBot.java&#10;ejb&#9;FILE&#9;file://C:/Users/User/Desktop/ejbot/src/main/java/com/artek/HtmlParser/EjBot.java&#10;start&#9;FILE&#9;file://C:/Users/User/Desktop/ejbot/src/main/java/com/artek/BotCommands/StartCommand.java&#10;startco&#9;FILE&#9;file://C:/Users/User/Desktop/ejbot/src/main/java/com/artek/BotCommands/StartCommand.java&#10;build.g&#9;FILE&#9;file://C:/Users/User/Desktop/ejbot/build.gradle&#10;BuildVa&#9;FILE&#9;file://C:/Users/User/Desktop/ejbot/src/main/java/com/artek/BuildVars.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545651034578" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545651104625" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../TelegramBotsExample-master" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
