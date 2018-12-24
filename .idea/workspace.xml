@@ -1,58 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fab44009-f708-4489-a6c3-0a793f854522" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.2/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.2/fileContent/fileContent.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.2/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.2/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.2/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.2/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.2/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.2/javaCompile/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.2/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.2/taskHistory/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.2/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.2/taskHistory/taskHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/taskHistory/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/taskHistory/taskHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/ej_bot_main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/ej_bot_main.iml" afterDir="false" />
+    <list default="true" id="fab44009-f708-4489-a6c3-0a793f854522" name="Default Changelist" comment="MAjor update2">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/artek/BotCommands/BotCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/artek/BotCommands/BotCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/artek/BotCommands/CommandRegistry.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/artek/BotCommands/CommandRegistry.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/artek/BotCommands/HackCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/artek/BotCommands/HackCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/artek/BotCommands/LogoutCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/artek/BotCommands/LogoutCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/artek/BotCommands/MarksCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/artek/BotCommands/MarksCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/artek/BotCommands/StartCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/artek/BotCommands/StartCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/artek/BuildVars.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/artek/Config.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/artek/Dao/ManagerDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/artek/Dao/ManagerDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/artek/DataSource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/artek/Database/ConnectionDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/artek/Database/ConnectionDB.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/artek/Database/DBManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/artek/Database/DBManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/artek/HtmlParser/EjBot.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/artek/HtmlParser/Parser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/artek/ICommand.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/artek/ICommandRegister.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/artek/IParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/artek/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/artek/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/artek/Models/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/artek/Models/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/artek/SessionFactory/SessionFactoryUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/artek/SessionFactory/SessionFactoryUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/libs/ej_bot-1.0-SNAPSHOT-all.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/hibernate.cfg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/shadowJar/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/shadowJar/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/artek/MainPack/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/hibernate.cfg.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/string.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/WEB-INF/appengine-web.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/WEB-INF/web.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/artek/MainPack/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/artek/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -124,8 +75,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="187">
+              <caret line="23" column="50" lean-forward="true" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -133,8 +84,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
+            <state relative-caret-position="170">
+              <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -576,6 +527,13 @@
               <item name="artek" type="462c0819:PsiDirectoryNode" />
               <item name="Database" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="ej_bot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ejbot" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -589,7 +547,7 @@
     <property name="SearchEverywhereHistoryKey" value="user&#9;FILE&#9;file://C:/Users/User/Desktop/ejbot/src/main/java/com/artek/Models/User.java&#10;Use&#9;FILE&#9;file://C:/Users/User/Desktop/ejbot/src/main/java/com/artek/Models/User.java&#10;DBM&#9;FILE&#9;file://C:/Users/User/Desktop/ejbot/src/main/java/com/artek/Database/DBManager.java&#10;build&#9;FILE&#9;file://C:/Users/User/Desktop/ejbot/build.gradle&#10;Build&#9;FILE&#9;file://C:/Users/User/Desktop/ejbot/src/main/java/com/artek/BuildVars.java&#10;ej&#9;FILE&#9;file://C:/Users/User/Desktop/ejbot/src/main/java/com/artek/HtmlParser/EjBot.java&#10;ejb&#9;FILE&#9;file://C:/Users/User/Desktop/ejbot/src/main/java/com/artek/HtmlParser/EjBot.java&#10;start&#9;FILE&#9;file://C:/Users/User/Desktop/ejbot/src/main/java/com/artek/BotCommands/StartCommand.java&#10;startco&#9;FILE&#9;file://C:/Users/User/Desktop/ejbot/src/main/java/com/artek/BotCommands/StartCommand.java&#10;build.g&#9;FILE&#9;file://C:/Users/User/Desktop/ejbot/build.gradle&#10;BuildVa&#9;FILE&#9;file://C:/Users/User/Desktop/ejbot/src/main/java/com/artek/BuildVars.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545651104625" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545651579415" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../TelegramBotsExample-master" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -727,7 +685,7 @@
       <workItem from="1545567439668" duration="317000" />
       <workItem from="1545583924344" duration="1994000" />
       <workItem from="1545643929140" duration="41000" />
-      <workItem from="1545649545485" duration="835000" />
+      <workItem from="1545649545485" duration="1378000" />
     </task>
     <task id="LOCAL-00001" summary="MAjor update">
       <created>1545554482876</created>
@@ -736,11 +694,25 @@
       <option name="project" value="LOCAL" />
       <updated>1545554482876</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="MAjor update">
+      <created>1545651099288</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1545651099288</updated>
+    </task>
+    <task id="LOCAL-00003" summary="MAjor update2">
+      <created>1545651173223</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1545651173223</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="149970000" />
+    <option name="totallyTimeSpent" value="150513000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -772,13 +744,13 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.42486086" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.3283859" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.5714286" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.5703704" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50040483" side_tool="true" weight="0.56666666" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.3283859" />
-      <window_info anchor="bottom" id="Version Control" order="11" weight="0.3283859" />
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.61296296" />
       <window_info anchor="bottom" id="Database Changes" order="12" weight="0.3283859" />
       <window_info anchor="bottom" id="Java Enterprise" order="13" weight="0.3283859" />
-      <window_info anchor="bottom" id="Database" order="14" weight="0.53061223" />
+      <window_info anchor="bottom" id="Database" order="14" weight="0.52962965" />
       <window_info anchor="bottom" id="Database Console" order="15" weight="0.554731" />
       <window_info anchor="right" id="Maven" />
       <window_info anchor="right" id="Palette" order="0" />
@@ -808,9 +780,36 @@
       </list>
     </option>
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="MAjor update" />
-    <option name="LAST_COMMIT_MESSAGE" value="MAjor update" />
+    <MESSAGE value="MAjor update2" />
+    <option name="LAST_COMMIT_MESSAGE" value="MAjor update2" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/gradlew">
@@ -1075,13 +1074,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/Database/BuildVars.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -1096,10 +1088,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="23" column="50" lean-forward="true" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
+        <state relative-caret-position="170">
+          <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
         </state>
       </provider>
     </entry>
