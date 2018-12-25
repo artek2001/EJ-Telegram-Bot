@@ -288,9 +288,11 @@ public class EjBot extends TelegramLongPollingBot implements ICommandRegister {
     private static SendMessage onAllMarksChoosen(Message message) {
         SendMessage messageRespone = new SendMessage();
         messageRespone.setChatId(message.getChatId().toString());
-        messageRespone.setText(MarksCommand.makeAllMarksRespond(message.getFrom()).toString());
-        messageRespone.enableMarkdown(true);
+        //messageRespone.setText(MarksCommand.makeAllMarksRespond(message.getFrom()).toString());
 
+        messageRespone.setText(ManagerDAO.getInstance().findById().toString());
+
+        messageRespone.enableMarkdown(true);
         return messageRespone;
     }
 
@@ -420,11 +422,14 @@ public class EjBot extends TelegramLongPollingBot implements ICommandRegister {
         SendMessage sendMessage = null;
         try {
             //instance.defaultCommandRegistry.getRegisteredCommand("logout").processMessage(instance, message, null);
+
             sendMessage = LogoutCommand.logout(message.getFrom(), message.getChat());
 
             sendMessage.setText("Successfully logged out");
             sendMessage.setChatId(message.getChatId().toString());
             sendMessage.setReplyMarkup(new ReplyKeyboardRemove());
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }

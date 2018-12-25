@@ -3,12 +3,13 @@ package com.artek.Models;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Cacheable
-@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_ONLY, region = "USER")
 @Table (name = "users")
-public class User {
+public class User implements Serializable {
 
     @Id
     @Column(name = "userId")
@@ -26,13 +27,17 @@ public class User {
     @Column(name = "state")
     private int state;
 
+    @Column(name = "allMarksLast")
+    private String allMarksLast;
 
     public User() {}
 
-    public User(int userId, String login, String password, String subjects) {
+    public User(int userId, String login, String password, int isActive, int state) {
         this.userId = userId;
         this.login = login;
         this.password = password;
+        this.isActive = isActive;
+        this.state = state;
     }
 
     public int getId() {
@@ -53,6 +58,8 @@ public class User {
         return isActive;
     }
 
+    public String getAllMarksLast() { return allMarksLast; }
+
     public void setIsActive(int isActive) { this.isActive = isActive; }
 
     public void setState(int state) { this.state = state; }
@@ -69,8 +76,10 @@ public class User {
         this.password = password;
     }
 
+    public void setAllMarksLast(String allMarksLast) { this.allMarksLast = allMarksLast; }
+
     @Override
     public String toString() {
-        return "models.User{userId= " + userId + ", login= " + login + ", password= " + password + " }";
+        return "models.User{userId= " + userId + ", login= " + login + ", password= " + password + " state= " + state + " }";
     }
 }

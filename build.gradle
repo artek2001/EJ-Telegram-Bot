@@ -41,7 +41,11 @@ dependencies {
 
     compile group: 'com.google.cloud.sql', name: 'mysql-socket-factory', version: '1.0.11'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.7'
-    compile group: 'org.hibernate', name: 'hibernate-ehcache', version: '5.3.7.Final'
+
+    compile group: 'org.ehcache', name: 'ehcache', version: '3.6.3'
+
+    compile group: 'org.hibernate', name: 'hibernate-jcache', version: '5.3.7.Final'
+
 
 
 }

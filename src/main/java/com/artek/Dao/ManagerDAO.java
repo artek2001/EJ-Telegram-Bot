@@ -4,8 +4,11 @@ import com.artek.Models.User;
 import com.artek.SessionFactory.SessionFactoryUtil;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.query.NativeQuery;
 import org.hibernate.query.Query;
 import org.telegram.telegrambots.meta.logging.BotLogger;
 
@@ -38,13 +41,13 @@ public class ManagerDAO {
 
         Session session = SessionFactoryUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        String sql = "INSERT INTO users (userId, login, password, isActive, state) VALUES (?,?,?,?,?) ON DUPLICATE KEY UPDATE isActive=?, ej_grsmubot.users.state=?";
+        String sql = "INSERT INTO users (userId, login, password, isActive, state) VALUES (?,?,?,?,?) ON DUPLICATE KEY UPDATE isActive=?, state=?";
         Query query = session.createSQLQuery(sql);
         query.setParameter(1, userId);
         query.setParameter(2, login);
         query.setParameter(3, password);
-        query.setParameter(4, state);
-        query.setParameter(5, isActive ? 1 : 0);
+        query.setParameter(4, isActive ? 1 : 0);
+        query.setParameter(5, state);
         query.setParameter(6, isActive ? 1 : 0);
         query.setParameter(7, 1);
         query.executeUpdate();
@@ -78,7 +81,7 @@ public class ManagerDAO {
             user = null;
 
             Session session = SessionFactoryUtil.getSessionFactory().openSession();
-            String hql = "FROM com.artek.Models.User as User WHERE User.userId=:param";
+            String hql = "FROM User WHERE User.userId=:param";
             Query query = session.createQuery(hql);
             query.setParameter("param", userId);
 
@@ -134,9 +137,10 @@ public class ManagerDAO {
 
     public String getRecentMarks(Integer userId) {
         Session session = SessionFactoryUtil.getSessionFactory().openSession();
-        String sql = "SELECT allMarksLast FROM ej_grsmubot.users WHERE userId=?";
-        Query query = session.createSQLQuery(sql);
-        query.setParameter(1, userId);
+        String hql = "SELECT allMarksLast FROM User WHERE userId=:param";
+        Query query = session.createQuery(hql);
+        query.setCacheable(true);
+        query.setParameter("param", userId);
 
         String marks = (String) query.getSingleResult();
         session.close();
@@ -176,11 +180,19 @@ public class ManagerDAO {
 
         Session session = SessionFactoryUtil.getSessionFactory().openSession();
 
-        String sql = "SELECT allMarksLast FROM ej_grsmubot.users WHERE userId=?";
-        Query query = session.createSQLQuery(sql);
-        query.setParameter(1, userId);
+//        String sql = "SELECT allMarksLast FROM ej_grsmubot.users WHERE userId=?";
+        String json = null;
+        try {
+            String hql = "SELECT allMarksLast FROM User WHERE userId=:param";
+            Query query = session.createQuery(hql);
+            query.setCacheable(true);
+            query.setParameter("param", userId);
 
-        String json = (String)query.getSingleResult();
+            json = (String) query.getSingleResult();
+
+        } catch (Exception e) {
+            BotLogger.error("EROOR", e);
+        }
 
         JsonNode rootNode = null;
         try {
@@ -196,5 +208,14 @@ public class ManagerDAO {
 
         session.close();
         return  allSubj;
+    }
+
+    public User findById() {
+        Session session = SessionFactoryUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        User user = session.get(User.class, 299332353);
+        transaction.commit();
+        session.close();
+        return user;
     }
 }

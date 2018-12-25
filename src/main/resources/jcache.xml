@@ -9,18 +9,25 @@
         <jsr107:defaults enable-management="true" enable-statistics="true" default-template="default" />
     </service>
 
-    <cache alias="org.hibernate.cache.spi.QueryResultsRegion">
+    <cache alias="default-query-results-region">
         <expiry>
             <tti unit="seconds">300</tti>
         </expiry>
         <heap>1024</heap>
     </cache>
 
-    <cache alias="org.hibernate.cache.spi.TimestampsRegion">
+    <cache alias="default-update-timestamps-region">
         <expiry>
             <none />
         </expiry>
         <heap>4096</heap>
+    </cache>
+
+    <cache alias="USER" uses-template="default">
+        <expiry>
+            <tti unit="seconds">300</tti>
+        </expiry>
+        <heap>1024</heap>
     </cache>
 
     <cache-template name="default">
@@ -30,11 +37,6 @@
         <heap>1024</heap>
     </cache-template>
 
-    <cache alias="USER" uses-template="default">
-        <expiry>
-            <tti unit="seconds">300</tti>
-        </expiry>
-        <heap>1024</heap>
-    </cache>
+
 
 </config>
