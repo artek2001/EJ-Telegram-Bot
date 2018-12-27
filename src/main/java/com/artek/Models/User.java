@@ -7,9 +7,9 @@ import java.io.Serializable;
 
 @Entity
 @Cacheable
-@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_ONLY, region = "USER")
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "USER")
 @Table (name = "users")
-public class User implements Serializable {
+public class User {
 
     @Id
     @Column(name = "userId")

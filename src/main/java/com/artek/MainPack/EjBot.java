@@ -5,6 +5,7 @@ import com.artek.Database.Config;
 import com.artek.Dao.ManagerDAO;
 import com.artek.BotCommands.ICommand;
 import com.artek.BotCommands.ICommandRegister;
+import com.artek.Models.User;
 import com.artek.SessionFactory.SessionFactoryUtil;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -18,6 +19,8 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.AnswerCallbackQuery;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -178,6 +181,7 @@ public class EjBot extends TelegramLongPollingBot implements ICommandRegister {
     }
 
     private void handleIncomingMessage(Message message) throws TelegramApiException {
+
         final int state = ManagerDAO.getInstance().getUserState(message.getFrom().getId());
         //TODO final String language
         if (message.isCommand()) {
@@ -288,9 +292,7 @@ public class EjBot extends TelegramLongPollingBot implements ICommandRegister {
     private static SendMessage onAllMarksChoosen(Message message) {
         SendMessage messageRespone = new SendMessage();
         messageRespone.setChatId(message.getChatId().toString());
-        //messageRespone.setText(MarksCommand.makeAllMarksRespond(message.getFrom()).toString());
-
-        messageRespone.setText(ManagerDAO.getInstance().findById().toString());
+        messageRespone.setText(MarksCommand.makeAllMarksRespond(message.getFrom()).toString());
 
         messageRespone.enableMarkdown(true);
         return messageRespone;
@@ -425,8 +427,8 @@ public class EjBot extends TelegramLongPollingBot implements ICommandRegister {
 
             sendMessage = LogoutCommand.logout(message.getFrom(), message.getChat());
 
-            sendMessage.setText("Successfully logged out");
-            sendMessage.setChatId(message.getChatId().toString());
+//            sendMessage.setText("Successfully logged out");
+//            sendMessage.setChatId(message.getChatId().toString());
             sendMessage.setReplyMarkup(new ReplyKeyboardRemove());
 
 

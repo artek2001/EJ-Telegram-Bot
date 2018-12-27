@@ -1,6 +1,11 @@
 package com.artek;
 
 import com.artek.MainPack.EjBot;
+import com.artek.Models.User;
+import com.artek.SessionFactory.SessionFactoryUtil;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
@@ -13,7 +18,8 @@ public class Main {
 
     private static final String LOGTAG = "MAIN";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+
 
         BotLogger.setLevel(Level.ALL);
         BotLogger.registerLogger(new ConsoleHandler());

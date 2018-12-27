@@ -26,16 +26,6 @@ public class StartCommand extends BotCommand{
 
     @Override
     public void execute(AbsSender sender, User userFrom, Chat chatFrom, String[] args) {
-        //TODO temporary stuff(remove in future)
-        try {
-            new Parser().allDepsMarks(userFrom.getId());
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ResponseException e) {
-            e.printStackTrace();
-        } catch (NotFound notFound) {
-            notFound.printStackTrace();
-        }
 
 
 
@@ -59,12 +49,15 @@ public class StartCommand extends BotCommand{
                         messageResponse.append("Successfully logged in");
                         managerDAO.addUser(userFrom.getId(),args[0], args[1], true, 1);
                         message.setReplyMarkup(EjBot.getMainMenuKeyboard());
+
+                        //TODO temporary stuff(remove in future)
+                        new Parser().allDepsMarks(userFrom.getId());
                     }
                     else {
                         messageResponse.append("Wrong login or password");
                     }
 
-                } catch (IOException e) {
+                } catch (IOException | ResponseException | NotFound e) {
                     BotLogger.error(LOGTAG, "ERROR is executeStartCommand method");
                 }
             }

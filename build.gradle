@@ -18,36 +18,35 @@ repositories {
 }
 
 dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
     compile files(fileTree(dir: 'libs', includes: ['*.jar']))
 
+    compile group: 'org.ehcache', name: 'ehcache', version: '3.6.3'
+
+    compile group: 'org.hibernate', name: 'hibernate-jcache', version: '5.3.7.Final'
+    compile group: 'org.hibernate', name: 'hibernate-core', version: '5.3.7.Final'
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.13'
+
     compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.6'
 
-    compile group: 'org.glassfish.jaxb', name: 'jaxb-runtime', version: '2.3.1'
+//    compile group: 'org.glassfish.jaxb', name: 'jaxb-runtime', version: '2.3.1'
 
-    //hibernate core
-    compile group: 'org.hibernate', name: 'hibernate-core', version: '5.3.7.Final'
 
     //Connection pool
     compile group: 'org.hibernate', name: 'hibernate-hikaricp', version: '5.3.7.Final'
     compile group: 'com.zaxxer', name: 'HikariCP', version: '3.2.0'
 
-    //hibernate annotations
-    compile group: 'org.hibernate.common', name: 'hibernate-commons-annotations', version: '5.1.0.Final'
 
+    compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.2.11'
+    compile group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.2.11'
+    compile group: 'com.sun.xml.bind', name: 'jaxb-core', version: '2.2.11'
+    //hibernate annotations
 
     compile "org.telegram:telegrambots:4.1"
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+
 
     compile group: 'com.google.cloud.sql', name: 'mysql-socket-factory', version: '1.0.11'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.7'
-
-    compile group: 'org.ehcache', name: 'ehcache', version: '3.6.3'
-
-    compile group: 'org.hibernate', name: 'hibernate-jcache', version: '5.3.7.Final'
-
-
-
 }
 jar {
     manifest {

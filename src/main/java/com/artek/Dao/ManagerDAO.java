@@ -56,42 +56,25 @@ public class ManagerDAO {
 
     }
 
+    public User getUserById(Integer userId) {
+        Session session = SessionFactoryUtil.getSessionFactory().openSession();
+        User user = session.get(User.class, userId);
+        session.close();
+
+        return user;
+    }
+
     public String[] getUserCredentials(Integer userId) {
         String[] credentials = new String[2];
-        Session session = SessionFactoryUtil.getSessionFactory().openSession();
-        String hql = "FROM com.artek.Models.User as User WHERE User.userId=:userIdParam";
-        try {
-            Query query = session.createQuery(hql);
-            query.setParameter("userIdParam", userId);
-            User user = (User) query.uniqueResult();
+        User user = getUserById(userId);
+        credentials[0] = user.getLogin();
+        credentials[1] = user.getPassword();
 
-            credentials[0] = user.getLogin();
-            credentials[1] = user.getPassword();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        session.close();
         return credentials;
     }
 
     public boolean isUserActive(Integer userId) {
-        User user = null;
-        try {
-            user = null;
-
-            Session session = SessionFactoryUtil.getSessionFactory().openSession();
-            String hql = "FROM User WHERE User.userId=:param";
-            Query query = session.createQuery(hql);
-            query.setParameter("param", userId);
-
-            user = (User) query.getSingleResult();
-
-            session.close();
-        } catch (Exception e) {
-            //when there is no user with such userId
-            return false;
-        }
+        User user = getUserById(userId);
 
         return user.getIsActive() == 1;
     }
@@ -111,13 +94,7 @@ public class ManagerDAO {
     }
 
     public int getUserState(Integer userId) {
-        Session session = SessionFactoryUtil.getSessionFactory().openSession();
-        String hql = "FROM com.artek.Models.User as User WHERE User.userId=:parameter";
-        Query query = session.createQuery(hql);
-        query.setParameter("parameter", userId);
-
-        User user = (User) query.getSingleResult();
-        session.close();
+        User user = getUserById(userId);
         return user.getState();
     }
 
@@ -125,7 +102,7 @@ public class ManagerDAO {
         Session session = SessionFactoryUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
-        String sql = "UPDATE users SET state = ? WHERE userId = ?";
+        String sql = "UPDATE users SET state=? WHERE userId=?";
         Query query = session.createSQLQuery(sql);
         query.setParameter(1, state);
         query.setParameter(2, userId);
@@ -136,15 +113,8 @@ public class ManagerDAO {
     }
 
     public String getRecentMarks(Integer userId) {
-        Session session = SessionFactoryUtil.getSessionFactory().openSession();
-        String hql = "SELECT allMarksLast FROM User WHERE userId=:param";
-        Query query = session.createQuery(hql);
-        query.setCacheable(true);
-        query.setParameter("param", userId);
-
-        String marks = (String) query.getSingleResult();
-        session.close();
-        return marks;
+        User user = getUserById(userId);
+        return user.getAllMarksLast();
     }
 
     public void setRecentMarks(String login, String allSubjectsWithMarks) {
@@ -178,21 +148,9 @@ public class ManagerDAO {
     public ArrayList<String> getAllSubjects(Integer userId) {
         ArrayList<String> allSubj = new ArrayList<>();
 
-        Session session = SessionFactoryUtil.getSessionFactory().openSession();
+        User user = getUserById(userId);
 
-//        String sql = "SELECT allMarksLast FROM ej_grsmubot.users WHERE userId=?";
-        String json = null;
-        try {
-            String hql = "SELECT allMarksLast FROM User WHERE userId=:param";
-            Query query = session.createQuery(hql);
-            query.setCacheable(true);
-            query.setParameter("param", userId);
-
-            json = (String) query.getSingleResult();
-
-        } catch (Exception e) {
-            BotLogger.error("EROOR", e);
-        }
+        String json = user.getAllMarksLast();
 
         JsonNode rootNode = null;
         try {
@@ -206,7 +164,6 @@ public class ManagerDAO {
             allSubj.add(subjName);
         }
 
-        session.close();
         return  allSubj;
     }
 
