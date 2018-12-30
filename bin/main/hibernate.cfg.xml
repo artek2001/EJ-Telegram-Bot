@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+
+        <!--<property name="connection.url">jdbc:mysql://us-cdbr-iron-east-01.cleardb.net/heroku_a2ae7762c153707?reconnect=true</property>-->
+
+
+        <!--DB Connection-->
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/sys?useLegacyDatetimeCode=false&amp;serverTimezone=UTC</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">root</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+        <property name="show_sql">true</property>
+        <property name="hbm2ddl.auto">update</property>
+
+        <!--Hikari CP-->
+        <property name="hibernate.connection.provider_class">org.hibernate.hikaricp.internal.HikariCPConnectionProvider</property>
+        <property name="hibernate.hikari.connectionTimeout">10000</property>
+        <property name="hibernate.hikari.minimumIdle">20</property>
+        <property name="hibernate.hikari.maximumPoolSize">300</property>
+        <property name="hibernate.hikari.idleTimeout">200000</property>
+
+
+        <!--configuring cache-->
+        <!--<property name="hibernate.cache.use_query_cache">true</property>-->
+        <property name="hibernate.cache.use_second_level_cache">true</property>
+
+        <property name="hibernate.javax.cache.missing_cache_strategy">create</property>
+        <property name="hibernate.cache.region.factory_class">jcache</property>
+        <property name="hibernate.javax.cache.provider">org.ehcache.jsr107.EhcacheCachingProvider</property>
+
+
+
+        <!--<property name="hibernate.javax.cache.missing_cache_strategy">create</property>-->
+
+
+
+        <!--<property name="hibernate.javax.cache.uri">file:src/main/resources/jcache.xml</property>-->
+
+
+
+
+        <!--<property name="hibernate.javax.cache.uri">classpath:ehcache.xml</property>-->
+
+        <!--<property name="hibernate.cache.query_cache_factory">org.hibernate.cache.ehcache.internal.EhcacheRegionFactory</property>-->
+        <mapping class="com.artek.Models.User"/>
+    </session-factory>
+</hibernate-configuration>
+

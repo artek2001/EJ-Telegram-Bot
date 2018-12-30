@@ -20,7 +20,6 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
 
-
         BotLogger.setLevel(Level.ALL);
         BotLogger.registerLogger(new ConsoleHandler());
 

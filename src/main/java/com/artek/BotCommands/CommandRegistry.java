@@ -2,6 +2,7 @@ package com.artek.BotCommands;
 
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.bots.AbsSender;
+import org.telegram.telegrambots.meta.logging.BotLogger;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -77,6 +78,14 @@ public class CommandRegistry implements ICommandRegister {
         }
 
         return command;
+    }
+
+    public void executeDefaultCommand(AbsSender sender, Message message) {
+        try {
+            defaultConsumer.accept(sender, message);
+        } catch (NullPointerException e) {
+            BotLogger.error("Execute Default Command", e);
+        }
     }
 
     //TODO registerAll method and other methods

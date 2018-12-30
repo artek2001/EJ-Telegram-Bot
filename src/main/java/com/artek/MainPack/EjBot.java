@@ -1,12 +1,14 @@
 package com.artek.MainPack;
 
 import com.artek.BotCommands.*;
+import com.artek.CustomTimerTask;
 import com.artek.Database.Config;
 import com.artek.Dao.ManagerDAO;
 import com.artek.BotCommands.ICommand;
 import com.artek.BotCommands.ICommandRegister;
 import com.artek.Models.User;
 import com.artek.SessionFactory.SessionFactoryUtil;
+import com.artek.TaskManager;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -24,6 +26,7 @@ import org.hibernate.SessionFactory;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.AnswerCallbackQuery;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.updatingmessages.DeleteMessage;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageReplyMarkup;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageText;
 import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
@@ -68,13 +71,38 @@ public class EjBot extends TelegramLongPollingBot implements ICommandRegister {
     public EjBot() {
         new Parser();
 
+        startAlerts();
+
         this.defaultCommandRegistry = new CommandRegistry(false, getBotUsername());
 
         registerCommand(new HackCommand());
         registerCommand(new StartCommand());
         registerCommand(new MarksCommand());
         registerCommand(new LogoutCommand());
+
+        registerDefaultAction(((absSender, message) -> {
+            SendMessage defaultMessage = new SendMessage();
+            defaultMessage.setText("Unknown command, please try again");
+            defaultMessage.setChatId(message.getChatId().toString());
+
+            try {
+                absSender.execute(defaultMessage);
+            } catch (TelegramApiException e) {
+                e.printStackTrace();
+            }
+        }));
+
         SessionFactoryUtil.build();
+
+    }
+
+    private void startAlerts() {
+        TaskManager.getInstance().startExecutionEveryDayAt(new CustomTimerTask("Alert", 1) {
+            @Override
+            public void execute() {
+                System.out.println("EXECUTION");
+            }
+        }, 11, 33, 0);
 
     }
 
@@ -156,7 +184,7 @@ public class EjBot extends TelegramLongPollingBot implements ICommandRegister {
 
     @Override
     public void registerDefaultAction(BiConsumer<AbsSender, Message> consumer) {
-
+        this.defaultCommandRegistry.registerDefaultAction(consumer);
     }
 
     @Override
@@ -188,18 +216,17 @@ public class EjBot extends TelegramLongPollingBot implements ICommandRegister {
             defaultCommandRegistry.executeCommand(this, message);
         }
 
-        else if (state == START_STATE) {
-            return;
-        }
-
         else {
             SendMessage sendMessageRequest = new SendMessage();
             switch (state) {
                 case START_STATE:
+                    System.out.println("EXECEUTING STATE " + state);
+                    instance.defaultCommandRegistry.executeDefaultCommand(instance, message);
                     break;
 
                 case MAIN_MENU:
                     sendMessageRequest = messageOnMainMenu(message);
+                    execute(sendMessageRequest);
                     break;
 
                 case ALL_SUBJECTS:
@@ -211,7 +238,7 @@ public class EjBot extends TelegramLongPollingBot implements ICommandRegister {
                     break;
 
             }
-            execute(sendMessageRequest);
+
         }
     }
 
@@ -290,6 +317,8 @@ public class EjBot extends TelegramLongPollingBot implements ICommandRegister {
     }
 
     private static SendMessage onAllMarksChoosen(Message message) {
+
+
         SendMessage messageRespone = new SendMessage();
         messageRespone.setChatId(message.getChatId().toString());
         messageRespone.setText(MarksCommand.makeAllMarksRespond(message.getFrom()).toString());

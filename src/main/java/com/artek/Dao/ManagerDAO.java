@@ -74,9 +74,15 @@ public class ManagerDAO {
     }
 
     public boolean isUserActive(Integer userId) {
-        User user = getUserById(userId);
+        User user = null;
+        try {
+            user = getUserById(userId);
+            return user.getIsActive() == 1;
+        } catch (NullPointerException e) {
+            return false;
+        }
 
-        return user.getIsActive() == 1;
+
     }
 
     public void setIsActiveForUser(Integer isActive, Integer userId) {
