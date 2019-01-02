@@ -68,5 +68,15 @@ C:/Users/User/Desktop/ejbot/src/main/resources/hibernate.cfg.xml</remarks>
         <property name="yearIsDateType" value="false" />
       </driver-properties>
     </data-source>
+    <data-source source="LOCAL" name="bin:main:hibernate.cfg.xml/Hibernate" uuid="f05cf689-93a8-4ae1-9836-c73ba10c83bd">
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <configured-by-url>true</configured-by-url>
+      <remarks>Hibernate
+
+C:/Users/User/Desktop/ejbot/bin/main/hibernate.cfg.xml</remarks>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/sys?useLegacyDatetimeCode=false&amp;serverTimezone=UTC</jdbc-url>
+    </data-source>
   </component>
 </project>

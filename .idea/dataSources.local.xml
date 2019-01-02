@@ -45,5 +45,9 @@
       <user-name>root</user-name>
       <introspection-schemas>*:@</introspection-schemas>
     </data-source>
+    <data-source name="bin:main:hibernate.cfg.xml/Hibernate" uuid="f05cf689-93a8-4ae1-9836-c73ba10c83bd">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" exact-version="0" />
+      <user-name>root</user-name>
+    </data-source>
   </component>
 </project>

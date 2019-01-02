@@ -1,11 +1,8 @@
 package com.artek.MainPack;
 
 import com.artek.Dao.ManagerDAO;
-import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.jaunt.*;
 import com.jaunt.component.Table;
 import org.apache.http.HttpEntity;
@@ -23,10 +20,28 @@ import java.util.*;
 
 public class Parser implements IParser {
 
+    private static volatile Parser instance;
     private static CloseableHttpClient client;
 
     public Parser() {
         client = HttpClients.createDefault();
+    }
+
+    public static Parser getInstance() {
+        final Parser currentInstance;
+        if (instance == null) {
+            synchronized (Parser.class) {
+                if (instance == null) {
+                    instance = new Parser();
+                }
+                currentInstance = instance;
+            }
+
+        } else {
+            currentInstance = instance;
+        }
+        return currentInstance;
+
     }
 
     @Override
@@ -42,7 +57,6 @@ public class Parser implements IParser {
 
         Map<String, ArrayList<String>> allMarks = new HashMap<>();
         Elements cellsDep = table.getCol(1);
-
 
         //Making Map of all deps and their marks
         int rawNumber = 1;
@@ -83,9 +97,18 @@ public class Parser implements IParser {
 
     public static boolean getPasswordByLogin(String login, String password) throws IOException {
 
+        String htmlString = getHtmlPage(login, password);
+        if (htmlString.length() > 400) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static String getHtmlPage(String login, String password) throws IOException {
         HttpPost post = new HttpPost("http://ej.grsmu.by/prosm_ocenki_stud.php");
 
-        List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+        List<NameValuePair> nvps = new ArrayList<>();
         nvps.add(new BasicNameValuePair("login", login));
         nvps.add(new BasicNameValuePair("password", password));
 
@@ -94,11 +117,7 @@ public class Parser implements IParser {
 
         HttpEntity entity = response.getEntity();
         String htmlString = EntityUtils.toString(entity, "UTF-8");
-        if (htmlString.length() > 400) {
-            return true;
-        } else {
-            return false;
-        }
+        return htmlString;
     }
 
     public static String loop(String login) throws IOException {
@@ -131,20 +150,10 @@ public class Parser implements IParser {
         CloseableHttpClient client = HttpClients.createDefault();
         HttpPost post = new HttpPost("http://ej.grsmu.by/prosm_ocenki_stud.php");
 
-
         String login = credentials[0];
         String password = credentials[1];
 
-        List<NameValuePair> nvps = new ArrayList<NameValuePair>();
-        nvps.add(new BasicNameValuePair("login", login));
-        nvps.add(new BasicNameValuePair("password", password));
-
-        post.setEntity(new UrlEncodedFormEntity(nvps));
-        CloseableHttpResponse response = client.execute(post);
-
-        HttpEntity entity = response.getEntity();
-
-        String htmlString = EntityUtils.toString(entity, "UTF-8");
+        String htmlString = getHtmlPage(login, password);
 
         UserAgent userAgent = new UserAgent();
         userAgent.openContent(htmlString);

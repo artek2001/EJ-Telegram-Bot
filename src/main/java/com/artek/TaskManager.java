@@ -35,7 +35,6 @@ public class TaskManager {
     }
 
     public void startExecutionEveryDayAt(CustomTimerTask task, int targetHour, int targetMin, int targetSec) {
-        BotLogger.warn(LOGTAG, "Starting execution of timer");
 
         final Runnable taskWrapper = () -> {
             try {
@@ -58,7 +57,7 @@ public class TaskManager {
         final LocalDateTime localNow = LocalDateTime.now(Clock.systemUTC());
         LocalDateTime localNext = localNow.withHour(targetHour).withMinute(targetMin).withSecond(targetSec);
         while (localNow.compareTo(localNext.minusSeconds(1)) > 0) {
-            localNext.plusDays(1);
+            localNext = localNext.plusDays(1);
         }
 
         final Duration duration = Duration.between(localNow, localNext);

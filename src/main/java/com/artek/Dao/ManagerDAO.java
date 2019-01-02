@@ -18,7 +18,7 @@ import java.util.Iterator;
 
 public class ManagerDAO {
 
-    public static volatile ManagerDAO instance;
+    private static volatile ManagerDAO instance;
 
     public static ManagerDAO getInstance() {
         final ManagerDAO currentInstance;
@@ -180,5 +180,10 @@ public class ManagerDAO {
         transaction.commit();
         session.close();
         return user;
+    }
+
+    public ArrayList<User> getAllUsers() {
+        Session session = SessionFactoryUtil.getSessionFactory().openSession();
+        return (ArrayList<User>) session.createQuery("FROM User").getResultList();
     }
 }

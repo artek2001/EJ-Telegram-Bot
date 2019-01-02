@@ -2,31 +2,17 @@ package com.artek.MainPack;
 
 import com.artek.BotCommands.*;
 import com.artek.CustomTimerTask;
-import com.artek.Database.Config;
 import com.artek.Dao.ManagerDAO;
-import com.artek.BotCommands.ICommand;
-import com.artek.BotCommands.ICommandRegister;
+import com.artek.Database.Config;
 import com.artek.Models.User;
 import com.artek.SessionFactory.SessionFactoryUtil;
 import com.artek.TaskManager;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.http.HttpEntity;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.util.EntityUtils;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import com.jaunt.NotFound;
+import com.jaunt.ResponseException;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
-import org.telegram.telegrambots.meta.api.methods.AnswerCallbackQuery;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.methods.updatingmessages.DeleteMessage;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageReplyMarkup;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageText;
 import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
@@ -34,21 +20,20 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.*;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.meta.bots.AbsSender;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.meta.logging.BotLogger;
 
-import javax.security.auth.callback.Callback;
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 import java.util.function.BiConsumer;
 
 public class EjBot extends TelegramLongPollingBot implements ICommandRegister {
 
-    public ArrayList<ICommand> commands = new ArrayList<>();
     public static final String LOGTAG = "EJBOT";
     private final CommandRegistry defaultCommandRegistry;
 
@@ -70,7 +55,6 @@ public class EjBot extends TelegramLongPollingBot implements ICommandRegister {
 
     public EjBot() {
         new Parser();
-
         startAlerts();
 
         this.defaultCommandRegistry = new CommandRegistry(false, getBotUsername());
@@ -97,31 +81,38 @@ public class EjBot extends TelegramLongPollingBot implements ICommandRegister {
     }
 
     private void startAlerts() {
-        TaskManager.getInstance().startExecutionEveryDayAt(new CustomTimerTask("Alert", 1) {
+        TaskManager.getInstance().startExecutionEveryDayAt(new CustomTimerTask("Reload_Marks_Task", -1) {
             @Override
             public void execute() {
-                System.out.println("EXECUTION");
+                executeReloadMarksTask();
             }
-        }, 11, 33, 0);
+        }, 6, 0, 0);
+
+        TaskManager.getInstance().startExecutionEveryDayAt(new CustomTimerTask("Reload_Marks_Task", -1) {
+            @Override
+            public void execute() {
+                executeReloadMarksTask();
+            }
+        }, 15, 0, 0);
 
     }
 
+    private void executeReloadMarksTask() {
+        BotLogger.info("EjBot", "Reload Task starting");
+        ArrayList<User> allUsers = ManagerDAO.getInstance().getAllUsers();
+        for (User user: allUsers) {
+            try {
+                Parser.getInstance().allDepsMarks(user.getId());
+            } catch (IOException | ResponseException | NotFound e) {
+                BotLogger.error("Error in ReloadMarks Task", e);
+            }
+        }
+        BotLogger.info("EjBot", "Successfully updated");
+    }
+
     public static boolean checkConnection(String login, String password) throws IOException {
-        String resultMessage = null;
+        String htmlString = Parser.getHtmlPage(login, password);
 
-        CloseableHttpClient client = HttpClients.createDefault();
-        HttpPost post = new HttpPost("http://ej.grsmu.by/prosm_ocenki_stud.php");
-
-        List<NameValuePair> nvps = new ArrayList<NameValuePair>();
-        nvps.add(new BasicNameValuePair("login", login));
-        nvps.add(new BasicNameValuePair("password", password));
-
-        post.setEntity(new UrlEncodedFormEntity(nvps));
-        CloseableHttpResponse response = client.execute(post);
-
-        HttpEntity entity = response.getEntity();
-
-        String htmlString = EntityUtils.toString(entity, "UTF-8");
         if (htmlString.length() > 200) {
             return true;
         }
@@ -220,7 +211,7 @@ public class EjBot extends TelegramLongPollingBot implements ICommandRegister {
             SendMessage sendMessageRequest = new SendMessage();
             switch (state) {
                 case START_STATE:
-                    System.out.println("EXECEUTING STATE " + state);
+                    System.out.println("EXECUTING STATE " + state);
                     instance.defaultCommandRegistry.executeDefaultCommand(instance, message);
                     break;
 
@@ -294,7 +285,7 @@ public class EjBot extends TelegramLongPollingBot implements ICommandRegister {
         firstRow.add(getAllMarksCommand());
 
         KeyboardRow secondRow = new KeyboardRow();
-        secondRow.add(getTimetableCommand());
+        //secondRow.add(getTimetableCommand());
         secondRow.add(getLogoutCommand());
 
         rows.add(firstRow);
