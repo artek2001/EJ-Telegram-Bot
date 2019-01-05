@@ -2,21 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fab44009-f708-4489-a6c3-0a793f854522" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/jaunt1.5.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/artek/BotCommands/StartCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/artek/BotCommands/StartCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/artek/Dao/ManagerDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/artek/Dao/ManagerDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/com/artek/MainPack/EjBot$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/artek/MainPack/EjBot$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/com/artek/MainPack/EjBot.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/artek/MainPack/EjBot.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/artek/MainPack/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/artek/MainPack/Parser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/artek/TaskManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/artek/TaskManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/artek/BotCommands/StartCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/artek/BotCommands/StartCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/artek/Dao/ManagerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/artek/Dao/ManagerDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/artek/MainPack/EjBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/artek/MainPack/EjBot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/artek/MainPack/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/artek/MainPack/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/artek/TaskManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/artek/TaskManager.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -90,60 +79,27 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/MainPack/Parser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="41" column="9" lean-forward="true" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/BotCommands/StartCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/MainPack/EjBot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="283" column="45" selection-start-line="283" selection-start-column="45" selection-end-line="283" selection-end-column="45" />
+            <state relative-caret-position="84">
+              <caret line="267" column="15" selection-start-line="267" selection-start-column="15" selection-end-line="267" selection-end-column="15" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3153#3154#0" expanded="true" />
-                <element signature="e#3209#3210#0" expanded="true" />
-                <element signature="e#3395#3396#0" expanded="true" />
-                <element signature="e#3451#3452#0" expanded="true" />
+                <element signature="e#3175#3176#0" expanded="true" />
+                <element signature="e#3231#3232#0" expanded="true" />
+                <element signature="e#3417#3418#0" expanded="true" />
+                <element signature="e#3473#3474#0" expanded="true" />
+                <element signature="e#8195#8196#0" expanded="true" />
+                <element signature="e#8288#8289#0" expanded="true" />
+                <element signature="e#8372#8373#0" expanded="true" />
+                <element signature="e#8683#8684#0" expanded="true" />
+                <element signature="e#8825#8826#0" expanded="true" />
+                <element signature="e#11455#11456#0" expanded="true" />
+                <element signature="e#11539#11540#0" expanded="true" />
+                <element signature="e#11624#11625#0" expanded="true" />
+                <element signature="e#11703#11704#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="27" column="24" lean-forward="true" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/BotCommands/CommandRegistry.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="84" column="33" selection-start-line="84" selection-start-column="33" selection-end-line="84" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -161,15 +117,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>hql</find>
-      <find>SELE</find>
-      <find>onAllS</find>
-      <find>SELECT</find>
-      <find>state</find>
-      <find>addUs</find>
-      <find>addU</find>
-      <find>setCach</find>
-      <find>logout</find>
       <find>onLogou</find>
       <find>toString</find>
       <find>onAllM</find>
@@ -191,6 +138,15 @@
       <find>EXECEUTIN</find>
       <find>registerDe</find>
       <find>client</find>
+      <find>secondrow</find>
+      <find>getAll</find>
+      <find>BACK</find>
+      <find>hide</find>
+      <find>onAllS</find>
+      <find>messageOn</find>
+      <find>getMain</find>
+      <find>removeAkk</find>
+      <find>you have</find>
     </findStrings>
     <replaceStrings>
       <replace>dataSourc</replace>
@@ -243,10 +199,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/artek/Dao/ManagerDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/artek/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/artek/TaskManager.java" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
         <option value="$PROJECT_DIR$/src/main/java/com/artek/BotCommands/StartCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/artek/MainPack/Parser.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/artek/MainPack/EjBot.java" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
       </list>
     </option>
   </component>
@@ -267,8 +223,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -292,12 +246,21 @@
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="artek" type="462c0819:PsiDirectoryNode" />
+              <item name="BotCommands" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ej_bot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="artek" type="462c0819:PsiDirectoryNode" />
               <item name="Dao" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -305,7 +268,7 @@
     <property name="SearchEverywhereHistoryKey" value="user&#9;FILE&#9;file://C:/Users/User/Desktop/ejbot/src/main/java/com/artek/Models/User.java&#10;Use&#9;FILE&#9;file://C:/Users/User/Desktop/ejbot/src/main/java/com/artek/Models/User.java&#10;DBM&#9;FILE&#9;file://C:/Users/User/Desktop/ejbot/src/main/java/com/artek/Database/DBManager.java&#10;build&#9;FILE&#9;file://C:/Users/User/Desktop/ejbot/build.gradle&#10;Build&#9;FILE&#9;file://C:/Users/User/Desktop/ejbot/src/main/java/com/artek/BuildVars.java&#10;ej&#9;FILE&#9;file://C:/Users/User/Desktop/ejbot/src/main/java/com/artek/HtmlParser/EjBot.java&#10;ejb&#9;FILE&#9;file://C:/Users/User/Desktop/ejbot/src/main/java/com/artek/HtmlParser/EjBot.java&#10;start&#9;FILE&#9;file://C:/Users/User/Desktop/ejbot/src/main/java/com/artek/BotCommands/StartCommand.java&#10;startco&#9;FILE&#9;file://C:/Users/User/Desktop/ejbot/src/main/java/com/artek/BotCommands/StartCommand.java&#10;build.g&#9;FILE&#9;file://C:/Users/User/Desktop/ejbot/build.gradle&#10;BuildVa&#9;FILE&#9;file://C:/Users/User/Desktop/ejbot/src/main/java/com/artek/BuildVars.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546169578844" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546706057577" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../jaunt1.5.3.jar!/" />
@@ -464,6 +427,8 @@
       <workItem from="1546329606275" duration="1325000" />
       <workItem from="1546450370869" duration="3948000" />
       <workItem from="1546454345792" duration="1503000" />
+      <workItem from="1546534544250" duration="3794000" />
+      <workItem from="1546699298398" duration="6751000" />
     </task>
     <task id="LOCAL-00001" summary="MAjor update">
       <created>1545554482876</created>
@@ -504,7 +469,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="206222000" />
+    <option name="totallyTimeSpent" value="216767000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -517,7 +482,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Designer" order="0" />
       <window_info id="Build Variants" order="1" side_tool="true" />
@@ -525,7 +489,7 @@
       <window_info id="UI Designer" order="3" />
       <window_info id="Favorites" order="4" sideWeight="0.5176252" side_tool="true" weight="0.2736842" />
       <window_info id="Capture Tool" order="5" />
-      <window_info content_ui="combo" id="Project" order="6" sideWeight="0.48237476" visible="true" weight="0.2923077" />
+      <window_info content_ui="combo" id="Project" order="6" sideWeight="0.48237476" visible="true" weight="0.26477733" />
       <window_info id="Persistence" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32962963" />
@@ -542,7 +506,7 @@
       <window_info anchor="bottom" id="Database Changes" order="12" weight="0.32777777" />
       <window_info anchor="bottom" id="Java Enterprise" order="13" weight="0.32777777" />
       <window_info anchor="bottom" id="Database" order="14" weight="0.52962965" />
-      <window_info anchor="bottom" id="Database Console" order="15" weight="0.5537037" />
+      <window_info anchor="bottom" id="Database Console" order="15" weight="0.837037" />
       <window_info anchor="bottom" id="Docker" order="16" show_stripe_button="false" />
       <window_info anchor="bottom" id="Duplicate detector" order="17" weight="0.8" />
       <window_info anchor="right" id="Palette" order="0" />
@@ -620,38 +584,11 @@
     <MESSAGE value="Enabling JCache + Ehcache" />
     <option name="LAST_COMMIT_MESSAGE" value="Enabling JCache + Ehcache" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/artek/BotCommands/StartCommand.java</url>
-          <line>43</line>
-          <properties />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/artek/MainPack/Parser.java</url>
-          <line>107</line>
-          <properties class="com.artek.MainPack.Parser" method="getHtmlPage">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/Database/BuildVars.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -685,13 +622,6 @@
     </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/a1778a56-2dfb-4722-83cc-7ca850ff84ba/console_1.sql">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/Models/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="39" column="17" selection-start-line="32" selection-start-column="4" selection-end-line="40" selection-end-column="5" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/SessionFactory/SessionFactoryUtil.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -844,13 +774,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/BotCommands/MarksCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="69" column="15" selection-start-line="69" selection-start-column="13" selection-end-line="69" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/BotCommands/BotCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-355">
@@ -963,10 +886,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.telegram/telegrambots-meta/4.1/92308827160d3adc3c4e508d26d62fe3c168dc0a/telegrambots-meta-4.1-sources.jar!/org/telegram/telegrambots/meta/api/methods/updatingmessages/EditMessageReplyMarkup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/Models/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="35" column="29" lean-forward="true" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="27" column="24" lean-forward="true" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
+        <state relative-caret-position="458">
+          <caret line="27" column="24" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/BotCommands/StartCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/BotCommands/CommandRegistry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="458">
+          <caret line="84" column="33" selection-start-line="84" selection-start-column="33" selection-end-line="84" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/BotCommands/MarksCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="62" column="121" selection-start-line="62" selection-start-column="23" selection-end-line="62" selection-end-column="121" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/MainPack/Parser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="171" column="95" selection-start-line="171" selection-start-column="95" selection-end-line="171" selection-end-column="95" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -977,43 +948,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/BotCommands/CommandRegistry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="84" column="33" selection-start-line="84" selection-start-column="33" selection-end-line="84" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/BotCommands/StartCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/MainPack/Parser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="41" column="9" lean-forward="true" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/artek/MainPack/EjBot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="283" column="45" selection-start-line="283" selection-start-column="45" selection-end-line="283" selection-end-column="45" />
+        <state relative-caret-position="84">
+          <caret line="267" column="15" selection-start-line="267" selection-start-column="15" selection-end-line="267" selection-end-column="15" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3153#3154#0" expanded="true" />
-            <element signature="e#3209#3210#0" expanded="true" />
-            <element signature="e#3395#3396#0" expanded="true" />
-            <element signature="e#3451#3452#0" expanded="true" />
+            <element signature="e#3175#3176#0" expanded="true" />
+            <element signature="e#3231#3232#0" expanded="true" />
+            <element signature="e#3417#3418#0" expanded="true" />
+            <element signature="e#3473#3474#0" expanded="true" />
+            <element signature="e#8195#8196#0" expanded="true" />
+            <element signature="e#8288#8289#0" expanded="true" />
+            <element signature="e#8372#8373#0" expanded="true" />
+            <element signature="e#8683#8684#0" expanded="true" />
+            <element signature="e#8825#8826#0" expanded="true" />
+            <element signature="e#11455#11456#0" expanded="true" />
+            <element signature="e#11539#11540#0" expanded="true" />
+            <element signature="e#11624#11625#0" expanded="true" />
+            <element signature="e#11703#11704#0" expanded="true" />
           </folding>
         </state>
       </provider>

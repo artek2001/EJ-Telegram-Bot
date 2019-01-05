@@ -26,10 +26,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.meta.logging.BotLogger;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.BiConsumer;
 
 public class EjBot extends TelegramLongPollingBot implements ICommandRegister {
@@ -77,7 +74,7 @@ public class EjBot extends TelegramLongPollingBot implements ICommandRegister {
         }));
 
         SessionFactoryUtil.build();
-
+        executeReloadMarksTask();
     }
 
     private void startAlerts() {
@@ -98,16 +95,76 @@ public class EjBot extends TelegramLongPollingBot implements ICommandRegister {
     }
 
     private void executeReloadMarksTask() {
+        SendMessage response = new SendMessage();
+
         BotLogger.info("EjBot", "Reload Task starting");
         ArrayList<User> allUsers = ManagerDAO.getInstance().getAllUsers();
+        //Map<String, String> userMarksMap = allUsers.stream().collect(Collectors.toMap(User::getLogin, User::getAllMarksLast));
         for (User user: allUsers) {
             try {
                 Parser.getInstance().allDepsMarks(user.getId());
             } catch (IOException | ResponseException | NotFound e) {
                 BotLogger.error("Error in ReloadMarks Task", e);
             }
+            String jsonNewMarks = ManagerDAO.getInstance().getUserById(user.getId()).getAllMarksLast();
+            String jsonOldMarks = user.getAllMarksLast();
+
+            if (jsonNewMarks.length() > jsonOldMarks.length()) {
+
+                String compared = null;
+                try {
+                    compared = compareJsonStrings(jsonNewMarks, jsonOldMarks);
+                } catch (IOException e) {
+                    BotLogger.error("Compare 2 Json strings", "Error in compare Method");
+                }
+
+
+                response.setChatId(String.valueOf(user.getId()));
+                response.setText(compared);
+                try {
+                    execute(response);
+                } catch (TelegramApiException e) {
+                    e.printStackTrace();
+                }
+            }
+
         }
         BotLogger.info("EjBot", "Successfully updated");
+    }
+
+    private String compareJsonStrings(String jsonNewMarks, String jsonOldMarks) throws IOException {
+        String compared = "";
+
+        Map<String, ArrayList<String>> jsonOldMap = new ObjectMapper().readValue(jsonOldMarks, new TypeReference<Map<String, ArrayList<String>>>() {});
+        Map<String, ArrayList<String>> jsonNewMap = new ObjectMapper().readValue(jsonNewMarks, new TypeReference<Map<String, ArrayList<String>>>() {});
+
+        List<String> oldKeySet = new ArrayList<>(jsonOldMap.keySet());
+        List<String> newKeySet = new ArrayList<>(jsonNewMap.keySet());
+
+        //compare subjects
+        if (oldKeySet.equals(newKeySet)) {
+            compared += "You have new marks:\n";
+            List<ArrayList<String>> valuesOld = new ArrayList<>(jsonOldMap.values());
+            List<ArrayList<String>> valuesNew = new ArrayList<>(jsonNewMap.values());
+
+            for (int k = 0; k < valuesNew.size(); k++) {
+                if (valuesNew.get(k).size() > valuesOld.get(k).size()) {
+
+                    List<String> newMarksResult = new ArrayList<>(valuesNew.get(k).subList(valuesOld.get(k).size() - 1, valuesNew.get(k).size() - 1));
+                    compared += oldKeySet.get(k) + " " + String.join(", ", newMarksResult) + "\n";
+                }
+            }
+
+            return compared;
+        }
+
+        else if (oldKeySet.size() > newKeySet.size()) {
+            return "Reduced number of subjects";
+        }
+
+        else {
+            return "Increased number of subjects";
+        }
     }
 
     public static boolean checkConnection(String login, String password) throws IOException {
@@ -276,20 +333,23 @@ public class EjBot extends TelegramLongPollingBot implements ICommandRegister {
     public static ReplyKeyboardMarkup getMainMenuKeyboard() {
         ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
         replyKeyboardMarkup.setSelective(true);
+        replyKeyboardMarkup.setOneTimeKeyboard(true);
         replyKeyboardMarkup.setResizeKeyboard(true);
-        replyKeyboardMarkup.setOneTimeKeyboard(false);
 
         List<KeyboardRow> rows = new ArrayList<>();
         KeyboardRow firstRow = new KeyboardRow();
         firstRow.add(getAllSubjectsCommand());
-        firstRow.add(getAllMarksCommand());
+//        firstRow.add(getAllMarksCommand());
 
         KeyboardRow secondRow = new KeyboardRow();
+        secondRow.add(getAllMarksCommand());
+        KeyboardRow thirdRow = new KeyboardRow();
         //secondRow.add(getTimetableCommand());
-        secondRow.add(getLogoutCommand());
+        thirdRow.add(getLogoutCommand());
 
         rows.add(firstRow);
         rows.add(secondRow);
+        rows.add(thirdRow);
 
         replyKeyboardMarkup.setKeyboard(rows);
 
@@ -458,6 +518,5 @@ public class EjBot extends TelegramLongPollingBot implements ICommandRegister {
 
         return sendMessage;
     }
-
 
 }
