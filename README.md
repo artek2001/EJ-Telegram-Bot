@@ -16,8 +16,10 @@ This bot uses:
 Abilites of the bot:
 - [x] Login via `/start login password` command
 - [x] Get all marks via `/allmarks` command
-- [x] Logout from the bot via `logout`
+- [x] Logout from the bot via `/logout`
 - [x] Using General Keyboard and Inline Keyboard
 - [x] Making 'Cache' feature to optimize sql queries
+- [x] TimeExecutor that sends updates twice a day if present
+- [x] Checks for new marks if present
 
 [Link](https://t.me/ejgrsmu_bot) to the bot
